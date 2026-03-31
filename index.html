@@ -701,7 +701,7 @@
   </div>
 
   <div class="site-note">
-    <strong>Click-to-edit version:</strong> click text while edit mode is on, click images to replace them, then use <strong>Download HTML</strong> and upload that file to GitHub when you want everyone to see the new version.
+    <strong>Click-to-edit version:</strong> click text while edit mode is on, click images to replace them, then use <strong>Download HTML</strong> and upload that file to GitHub when you want everyone to see the new version. This downloaded file stays editable after you upload it.
   </div>
 
   <nav class="nav">
@@ -1136,21 +1136,7 @@
 
     function downloadHtml() {
       saveHere();
-      const clone = document.documentElement.cloneNode(true);
-      clone.querySelectorAll('script').forEach(s => {
-        if (s.dataset.removeOnExport === 'true') s.remove();
-      });
-      clone.querySelectorAll('.editor-bar, #toast, .hidden-input').forEach(el => el.remove());
-      clone.querySelectorAll('[contenteditable]').forEach(el => el.setAttribute('contenteditable', 'false'));
-      clone.querySelectorAll('.editable, .editable-image').forEach(el => {
-        el.classList.remove('editable');
-        el.classList.remove('editable-image');
-      });
-      clone.querySelectorAll('.item-controls').forEach(el => el.remove());
-      clone.querySelector('.site-note').innerHTML = '<strong>Click-to-edit version:</strong> this file can be re-uploaded to GitHub Pages. Browser-only changes become public after you upload this updated HTML file.';
-      clone.querySelector('body').classList.remove('edit-mode');
-      clone.querySelector('body').classList.add('has-editor');
-      const html = '<!DOCTYPE html>\n' + clone.outerHTML;
+      const html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
       const blob = new Blob([html], { type: 'text/html' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
@@ -1158,7 +1144,7 @@
       a.download = 'index.html';
       a.click();
       URL.revokeObjectURL(url);
-      showToast('Updated HTML downloaded');
+      showToast('Editable HTML downloaded');
     }
 
     function removeClosest(btn, selector) {
