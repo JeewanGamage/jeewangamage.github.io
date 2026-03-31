@@ -22,6 +22,9 @@
       --teal: #2a6b78;
       --green: #3d7055;
       --line: rgba(107,66,38,0.12);
+      --danger: #b73a3a;
+      --editor-blue: #2563eb;
+      --editor-bg: rgba(37,99,235,0.08);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -35,13 +38,69 @@
 
     a { color: inherit; }
     img { max-width: 100%; display: block; }
-
     .wrap { width: min(1180px, 92vw); margin: 0 auto; }
+
+    body.has-editor { padding-top: 54px; }
+    .editor-bar {
+      position: fixed;
+      inset: 0 0 auto 0;
+      height: 54px;
+      background: rgba(17, 12, 7, 0.98);
+      border-bottom: 1px solid rgba(200,133,58,0.22);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+    }
+    .editor-inner {
+      width: min(1320px, 96vw);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .editor-title {
+      color: var(--straw);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .editor-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .editor-btn {
+      border: 1px solid rgba(255,255,255,0.14);
+      background: transparent;
+      color: rgba(255,255,255,0.82);
+      border-radius: 4px;
+      padding: 0.45rem 0.75rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      text-transform: uppercase;
+    }
+    .editor-btn:hover { border-color: var(--gold); color: var(--straw); }
+    .editor-btn.primary { background: var(--gold); color: var(--soil); border-color: var(--gold); }
+    .editor-btn.primary:hover { background: var(--gold-light); }
+    .editor-btn.danger { border-color: rgba(183,58,58,0.6); color: #ffd4d4; }
+    .editor-btn.danger:hover { background: rgba(183,58,58,0.15); }
+    .editor-status {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.78rem;
+      white-space: nowrap;
+    }
 
     .site-note {
       background: var(--soil);
-      color: rgba(255,255,255,0.8);
-      padding: 0.7rem 1rem;
+      color: rgba(255,255,255,0.82);
+      padding: 0.75rem 1rem;
       font-size: 0.85rem;
       text-align: center;
     }
@@ -49,7 +108,7 @@
 
     .nav {
       position: sticky;
-      top: 0;
+      top: 54px;
       z-index: 20;
       background: rgba(28,18,8,0.96);
       backdrop-filter: blur(10px);
@@ -110,6 +169,7 @@
       object-fit: cover;
       opacity: 0.18;
       mix-blend-mode: luminosity;
+      display: none;
     }
     .hero-inner {
       position: relative;
@@ -180,10 +240,7 @@
       border: 1px solid rgba(255,255,255,0.3);
       color: var(--cream);
     }
-    .btn-outline:hover {
-      border-color: var(--gold);
-      color: var(--gold);
-    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
     .portrait-card {
       position: relative;
       z-index: 1;
@@ -197,7 +254,8 @@
       height: 100%;
       object-fit: cover;
     }
-    .portrait-empty {
+    .portrait-empty,
+    .image-empty {
       width: 100%;
       height: 100%;
       min-height: 420px;
@@ -220,9 +278,9 @@
       display: inline-flex;
       align-items: center;
       gap: 0.8rem;
-      margin-bottom: 0.9rem;
+      margin-bottom: 0.8rem;
       font-family: 'DM Mono', monospace;
-      font-size: 0.68rem;
+      font-size: 0.7rem;
       letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--gold);
@@ -233,153 +291,144 @@
       height: 1px;
       background: var(--gold);
     }
+    .section-dark .label { color: var(--straw); }
+    .section-dark .label::after { background: var(--straw); }
     .section-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2rem, 3.5vw, 3rem);
-      font-weight: 700;
+      font-size: clamp(2rem, 3.8vw, 3rem);
       line-height: 1.15;
-      margin-bottom: 2rem;
+      font-weight: 700;
+      margin-bottom: 2.2rem;
     }
-    .section-dark .section-title { color: var(--cream); }
-
     .about-grid {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: minmax(0, 1.1fr) minmax(260px, 420px);
       gap: 3rem;
       align-items: start;
     }
     .about-bio p {
       font-size: 0.98rem;
-      line-height: 1.9;
       color: var(--muted);
       margin-bottom: 1rem;
     }
     .creds {
-      display: grid;
-      gap: 0.8rem;
       margin-top: 1.8rem;
+      display: grid;
+      gap: 0.9rem;
     }
     .cred {
       display: flex;
-      gap: 0.9rem;
       align-items: flex-start;
-      padding: 1rem 1.1rem;
+      gap: 0.9rem;
+      padding: 1rem 1.05rem;
       background: var(--parchment);
       border-left: 3px solid var(--gold);
     }
-    .cred-icon { font-size: 1.15rem; }
+    .cred-icon { font-size: 1.1rem; }
     .cred strong {
       display: block;
-      margin-bottom: 0.1rem;
       font-size: 0.9rem;
+      color: var(--soil);
+      margin-bottom: 0.2rem;
     }
     .cred span {
-      color: var(--muted);
       font-size: 0.78rem;
+      color: var(--muted);
       font-family: 'DM Mono', monospace;
     }
     .about-photo {
+      min-height: 460px;
+      border: 1px solid rgba(200,133,58,0.2);
       background: rgba(200,133,58,0.08);
-      border: 1px solid rgba(200,133,58,0.18);
-      min-height: 520px;
       overflow: hidden;
+      position: relative;
     }
-    .about-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      min-height: 520px;
-    }
-    .about-photo.empty {
-      display: grid;
-      place-items: center;
-      text-align: center;
-      color: rgba(107,66,38,0.5);
-      font-family: 'DM Mono', monospace;
-      font-size: 0.8rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 1.5rem;
-    }
+    .about-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .about-photo .image-empty { min-height: 460px; color: rgba(107,66,38,0.45); }
 
     .cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1px;
-      background: var(--line);
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2px;
+      background: rgba(107,66,38,0.1);
     }
     .card {
       background: var(--parchment);
       padding: 1.8rem;
+      position: relative;
     }
     .card-num {
       font-family: 'Cormorant Garamond', serif;
       font-size: 3.2rem;
       line-height: 1;
       color: rgba(200,133,58,0.14);
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.8rem;
     }
     .card-title {
       font-size: 1rem;
       font-weight: 700;
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.7rem;
     }
     .card-desc {
+      font-size: 0.86rem;
       color: var(--muted);
-      font-size: 0.88rem;
-      line-height: 1.8;
+      margin-bottom: 0.9rem;
     }
     .tags {
       display: flex;
-      flex-wrap: wrap;
       gap: 0.45rem;
-      margin-top: 0.9rem;
+      flex-wrap: wrap;
     }
     .tag {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.66rem;
-      padding: 0.22rem 0.55rem;
       background: rgba(200,133,58,0.1);
       color: var(--brown);
+      border-radius: 3px;
+      padding: 0.24rem 0.55rem;
+      font-size: 0.68rem;
+      font-family: 'DM Mono', monospace;
     }
 
+    .gallery-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 0.6rem;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
     }
     .gallery-item {
-      background: rgba(200,133,58,0.06);
+      background: var(--parchment);
+      border: 1px solid rgba(107,66,38,0.08);
       overflow: hidden;
-      border: 1px solid rgba(200,133,58,0.12);
+      position: relative;
     }
     .gallery-item img {
       width: 100%;
-      height: 260px;
+      height: 250px;
       object-fit: cover;
     }
-    .gallery-copy {
-      padding: 0.9rem 1rem 1rem;
-    }
+    .gallery-copy { padding: 0.95rem 1rem 1rem; }
     .gallery-cat {
       font-family: 'DM Mono', monospace;
-      font-size: 0.64rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      font-size: 0.66rem;
+      letter-spacing: 0.1em;
       color: var(--gold);
+      text-transform: uppercase;
       margin-bottom: 0.35rem;
     }
-    .gallery-caption {
-      font-size: 0.88rem;
-      color: var(--soil-mid);
-    }
-    .empty-block {
+    .gallery-caption { font-size: 0.86rem; color: var(--muted); }
+    .gallery-empty {
+      border: 2px dashed rgba(200,133,58,0.22);
       padding: 2rem;
-      border: 2px dashed rgba(200,133,58,0.25);
       text-align: center;
-      color: rgba(107,66,38,0.6);
+      color: rgba(107,66,38,0.45);
       font-family: 'DM Mono', monospace;
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
@@ -387,123 +436,97 @@
     .pub-list {
       display: grid;
       gap: 1px;
-      background: var(--line);
+      background: rgba(107,66,38,0.1);
     }
     .pub-item {
       background: var(--parchment);
       padding: 1.4rem 1.5rem;
       display: grid;
-      grid-template-columns: 70px 1fr auto;
+      grid-template-columns: 74px 1fr auto;
       gap: 1rem;
       align-items: start;
+      position: relative;
     }
     .pub-year {
       font-family: 'DM Mono', monospace;
+      font-size: 0.76rem;
       color: var(--gold);
-      font-size: 0.8rem;
       padding-top: 0.2rem;
     }
-    .pub-title {
-      font-size: 0.98rem;
-      font-weight: 700;
-      margin-bottom: 0.25rem;
-    }
-    .pub-authors {
-      color: var(--muted);
-      font-size: 0.84rem;
-      margin-bottom: 0.15rem;
-    }
-    .pub-journal {
-      font-family: 'DM Mono', monospace;
-      color: var(--teal);
-      font-size: 0.76rem;
-    }
+    .pub-title { font-weight: 700; margin-bottom: 0.3rem; }
+    .pub-authors { font-size: 0.84rem; color: var(--muted); margin-bottom: 0.15rem; }
+    .pub-journal { font-size: 0.78rem; color: var(--teal); font-family: 'DM Mono', monospace; }
     .pub-badge {
-      font-size: 0.63rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      font-weight: 700;
-      padding: 0.25rem 0.55rem;
-      white-space: nowrap;
       align-self: start;
+      border-radius: 3px;
+      padding: 0.25rem 0.6rem;
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: rgba(200,133,58,0.12);
+      color: var(--brown);
+      white-space: nowrap;
     }
-    .paper { background: rgba(42,107,120,0.12); color: var(--teal); }
-    .inprep { background: rgba(200,133,58,0.12); color: var(--brown); }
-    .thesis { background: rgba(61,112,85,0.12); color: var(--green); }
+    .pub-badge.paper { background: rgba(42,107,120,0.12); color: var(--teal); }
+    .pub-badge.inprep { background: rgba(200,133,58,0.12); color: var(--brown); }
+    .pub-badge.thesis { background: rgba(61,112,85,0.12); color: var(--green); }
 
     .timeline {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       gap: 0;
-      border-top: 1px solid rgba(200,133,58,0.18);
-      border-bottom: 1px solid rgba(200,133,58,0.18);
+      border-left: 3px solid var(--gold);
     }
     .timeline-item {
-      padding: 1.4rem 1.1rem 1.7rem;
+      padding: 1.2rem 1rem 1.6rem;
       border-left: 1px solid rgba(200,133,58,0.18);
     }
-    .timeline-item:first-child { border-left: 3px solid var(--gold); }
     .period {
       display: inline-block;
-      margin-bottom: 0.6rem;
-      padding: 0.22rem 0.5rem;
+      margin-bottom: 0.7rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.66rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
       background: rgba(200,133,58,0.1);
       color: var(--gold);
-      font-family: 'DM Mono', monospace;
-      font-size: 0.62rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      padding: 0.22rem 0.55rem;
+      border-radius: 3px;
     }
     .timeline-title {
       font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
       color: var(--straw);
-      font-size: 1.08rem;
+      margin-bottom: 0.7rem;
       font-weight: 700;
-      margin-bottom: 0.65rem;
     }
-    .timeline ul {
-      list-style: none;
-      display: grid;
-      gap: 0.4rem;
-    }
-    .timeline li {
-      position: relative;
-      padding-left: 0.9rem;
-      color: rgba(255,255,255,0.72);
-      font-size: 0.8rem;
-      line-height: 1.45;
-    }
-    .timeline li::before {
-      content: "→";
-      position: absolute;
-      left: 0;
-      color: var(--gold);
-    }
+    .timeline-item ul { padding-left: 1rem; }
+    .timeline-item li { color: rgba(255,255,255,0.72); font-size: 0.82rem; margin-bottom: 0.35rem; }
 
     .partners {
       background: var(--soil-mid);
-      color: var(--cream);
+      color: rgba(255,255,255,0.85);
     }
     .partners-title {
       text-align: center;
       font-family: 'DM Mono', monospace;
-      font-size: 0.7rem;
-      letter-spacing: 0.16em;
+      font-size: 0.74rem;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: rgba(232,200,122,0.55);
-      margin-bottom: 1.8rem;
+      color: rgba(232,201,122,0.56);
+      margin-bottom: 1.6rem;
     }
     .partner-list {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
       gap: 0.8rem;
+      justify-content: center;
     }
     .partner-list span {
-      border: 1px solid rgba(200,133,58,0.25);
-      padding: 0.45rem 1rem;
-      font-size: 0.8rem;
-      color: rgba(255,255,255,0.75);
+      border: 1px solid rgba(200,133,58,0.24);
+      padding: 0.42rem 0.9rem;
+      font-size: 0.78rem;
     }
 
     .contact {
@@ -515,50 +538,46 @@
       font-family: 'Cormorant Garamond', serif;
       font-size: 2.5rem;
       color: var(--straw);
-      margin-bottom: 0.45rem;
+      margin-bottom: 0.5rem;
     }
     .contact-role {
       font-family: 'DM Mono', monospace;
-      color: rgba(232,200,122,0.62);
       font-size: 0.82rem;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
+      color: rgba(255,255,255,0.56);
       margin-bottom: 2rem;
     }
     .contact-email {
+      display: inline-block;
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.55rem;
+      font-size: 1.5rem;
       color: var(--straw);
       text-decoration: none;
-      border-bottom: 1px solid rgba(232,200,122,0.25);
-      padding-bottom: 0.2rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid rgba(232,201,122,0.28);
     }
     .contact-location {
-      margin-top: 0.9rem;
+      color: rgba(255,255,255,0.45);
       font-family: 'DM Mono', monospace;
-      font-size: 0.75rem;
-      color: rgba(255,255,255,0.5);
+      font-size: 0.76rem;
       letter-spacing: 0.08em;
+      margin-bottom: 1.8rem;
     }
     .socials {
       display: flex;
-      justify-content: center;
-      gap: 0.8rem;
       flex-wrap: wrap;
-      margin-top: 2rem;
+      gap: 0.8rem;
+      justify-content: center;
     }
     .socials a {
       text-decoration: none;
-      border: 1px solid rgba(255,255,255,0.2);
-      padding: 0.45rem 1rem;
-      color: rgba(255,255,255,0.78);
-      font-size: 0.74rem;
-      letter-spacing: 0.07em;
+      border: 1px solid rgba(255,255,255,0.16);
+      padding: 0.45rem 0.9rem;
+      font-size: 0.76rem;
       text-transform: uppercase;
-    }
-    .socials a:hover {
-      border-color: var(--gold);
-      color: var(--gold);
+      letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.74);
     }
 
     footer {
@@ -569,13 +588,87 @@
       text-align: center;
     }
 
-    @media (max-width: 980px) {
-      .hero-inner,
-      .about-grid { grid-template-columns: 1fr; }
+    .editable {
+      transition: box-shadow 0.15s ease, background 0.15s ease;
+      border-radius: 4px;
+    }
+    body.edit-mode .editable:hover {
+      box-shadow: 0 0 0 2px rgba(37,99,235,0.38);
+      background: var(--editor-bg);
+      cursor: text;
+    }
+    body.edit-mode [contenteditable="true"]:focus {
+      outline: 2px solid rgba(37,99,235,0.5);
+      background: rgba(255,255,255,0.08);
+    }
+    body.edit-mode .editable-image {
+      position: relative;
+      cursor: pointer;
+    }
+    body.edit-mode .editable-image::after {
+      content: 'Click to change image';
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      background: rgba(37,99,235,0.92);
+      color: white;
+      font-size: 0.68rem;
+      padding: 0.25rem 0.45rem;
+      border-radius: 4px;
+      letter-spacing: 0.03em;
+    }
+    .item-controls {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      display: none;
+      gap: 0.45rem;
+      z-index: 4;
+    }
+    body.edit-mode .gallery-item:hover .item-controls,
+    body.edit-mode .pub-item:hover .item-controls,
+    body.edit-mode .card:hover .item-controls,
+    body.edit-mode .timeline-item:hover .item-controls { display: flex; }
+    .mini-btn {
+      border: none;
+      background: rgba(17, 12, 7, 0.82);
+      color: white;
+      border-radius: 4px;
+      padding: 0.25rem 0.45rem;
+      font-size: 0.68rem;
+      cursor: pointer;
+    }
+    .mini-btn.danger { background: rgba(183,58,58,0.92); }
+
+    #toast {
+      position: fixed;
+      right: 1rem;
+      bottom: 1rem;
+      background: var(--green);
+      color: white;
+      padding: 0.75rem 1rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      opacity: 0;
+      transform: translateY(20px);
+      pointer-events: none;
+      transition: all 0.2s ease;
+      z-index: 1100;
+    }
+    #toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hidden-input { display: none; }
+
+    @media (max-width: 1100px) {
+      .hero-inner, .about-grid { grid-template-columns: 1fr; }
       .timeline { grid-template-columns: 1fr 1fr; }
       .portrait-card { max-width: 420px; }
     }
-    @media (max-width: 720px) {
+    @media (max-width: 780px) {
+      .nav { top: 54px; }
       .nav-inner { padding: 0.85rem 0; align-items: flex-start; }
       .nav-links { gap: 0.8rem; }
       .pub-item { grid-template-columns: 1fr; }
@@ -583,182 +676,37 @@
       .section { padding: 4.2rem 0; }
       .hero-inner { min-height: auto; padding: 4rem 0 3rem; }
       .gallery-item img { height: 220px; }
+      .editor-title { display: none; }
+      .editor-inner { justify-content: center; }
     }
   </style>
 </head>
-<body>
-  <!--
-    ===========================================================
-    EDIT HERE ONLY
-    ===========================================================
-    This file is made for easy GitHub editing.
-
-    1. Change text inside SITE_DATA below.
-    2. Upload images into your repo, then set the image paths.
-    3. Good examples:
-       heroPortrait: "assets/profile.jpg"
-       heroBackground: "assets/hero.jpg"
-       aboutPhoto: "assets/about.jpg"
-       gallery image: "assets/gallery/field-01.jpg"
-
-    If an image path is left empty, the website shows a placeholder.
-    ===========================================================
-  -->
-  <script>
-    const SITE_DATA = {
-      hero: {
-        firstName: "Jeewan",
-        lastName: "Gamage",
-        eyebrow: "Soil Scientist · Postdoctoral Researcher · Soil Organic Matter",
-        tagline: "Advancing the science of soil organic matter, water function, and spectroscopic measurement in agricultural systems, from mechanisms to field-scale translation.",
-        heroPortrait: "",
-        heroBackground: ""
-      },
-      about: {
-        title: "Soil Scientist at the Plant–Water Nexus",
-        bio: [
-          "I am a postdoctoral researcher and soil scientist with expertise in soil organic matter fractionation, solid-state 13C NMR spectroscopy, DRIFTS, and soil function across managed agricultural systems.",
-          "My work connects fundamental mechanisms of carbon persistence and transformation with field-scale management questions, especially where soil carbon, nutrient cycling, and water-related functions intersect.",
-          "I am particularly interested in building mechanistic, management-sensitive indicators that move beyond bulk carbon metrics toward clearer understanding of agroecosystem resilience."
-        ],
-        credentials: [
-          {
-            icon: "🎓",
-            title: "Postdoctoral Researcher, Soil Science",
-            subtitle: "University of Guelph · Soil organic matter · Fractionation"
-          },
-          {
-            icon: "🔬",
-            title: "Spectroscopy and SOM Specialist",
-            subtitle: "Solid-state 13C NMR · DRIFTS · Elemental analysis"
-          },
-          {
-            icon: "🌱",
-            title: "Research Focus",
-            subtitle: "SOM persistence · MAOM and POM · Management effects"
-          },
-          {
-            icon: "📘",
-            title: "Teaching and Academic Leadership",
-            subtitle: "Course design · Research communication · Mentoring"
-          }
-        ],
-        aboutPhoto: ""
-      },
-      research: [
-        {
-          title: "Soil Organic Matter Fractionation and Persistence",
-          desc: "Investigating how management reshapes particulate and mineral-associated organic matter pools, and how those shifts relate to carbon persistence and soil function.",
-          tags: ["POM", "MAOM", "NaI Fractionation", "Soil Carbon"]
-        },
-        {
-          title: "Spectroscopy for Mechanistic Soil Understanding",
-          desc: "Using solid-state 13C NMR, DRIFTS, and related analytical tools to resolve the molecular nature of soil organic matter and management-sensitive compositional changes.",
-          tags: ["13C NMR", "DRIFTS", "Molecular Composition", "SOM Chemistry"]
-        },
-        {
-          title: "Management, Water Function, and Resilience",
-          desc: "Linking management-driven changes in soil organic matter with nutrient and water-related soil functions, with the goal of identifying meaningful indicators of resilience.",
-          tags: ["Water Function", "Resilience", "Grazing", "Agricultural Soils"]
-        }
-      ],
-      gallery: [
-        {
-          image: "",
-          category: "Field Work",
-          caption: "Upload an image to assets/gallery and set the image path here."
-        }
-      ],
-      publications: [
-        {
-          year: "2024",
-          title: "DRIFT-NMR-Jeewan et al 2024",
-          authors: "Gamage, J., et al.",
-          journal: "Add journal name here",
-          type: "paper",
-          url: ""
-        },
-        {
-          year: "2026",
-          title: "Add your current paper or manuscript here",
-          authors: "Gamage, J., et al.",
-          journal: "In preparation",
-          type: "inprep",
-          url: ""
-        }
-      ],
-      fiveYearPlan: [
-        {
-          period: "Year 1",
-          title: "Mechanistic Foundation",
-          items: [
-            "Advance SOM fractionation and spectroscopy workflows",
-            "Develop core publications from current datasets",
-            "Strengthen links between composition and function"
-          ]
-        },
-        {
-          period: "Year 2",
-          title: "Cross-System Testing",
-          items: [
-            "Compare management systems and soil fractions",
-            "Refine analytical pipelines and interpretation",
-            "Build collaborative datasets"
-          ]
-        },
-        {
-          period: "Year 3",
-          title: "Translation and Prediction",
-          items: [
-            "Connect mechanistic results with practical indicators",
-            "Explore scalable sensing and prediction approaches",
-            "Expand integrated soil function analysis"
-          ]
-        },
-        {
-          period: "Year 4",
-          title: "Program Expansion",
-          items: [
-            "Lead larger collaborative projects",
-            "Mentor trainees and publish synthesis work",
-            "Extend work toward broader agroecosystem resilience questions"
-          ]
-        },
-        {
-          period: "Year 5+",
-          title: "Research Leadership",
-          items: [
-            "Establish a distinctive independent research program",
-            "Build long-term collaborations",
-            "Translate work into broader scientific and applied impact"
-          ]
-        }
-      ],
-      partners: [
-        "University of Guelph",
-        "Elora Research Station",
-        "Collaborative Soil and Agronomy Networks"
-      ],
-      contact: {
-        fullName: "Jeewan Gamage",
-        role: "Soil Scientist · Postdoctoral Researcher · University of Guelph",
-        email: "your.email@uoguelph.ca",
-        location: "Guelph, Ontario, Canada",
-        researchGate: "#",
-        googleScholar: "#",
-        linkedIn: "#",
-        universityProfile: "#"
-      }
-    };
-  </script>
+<body class="has-editor edit-mode">
+  <div class="editor-bar">
+    <div class="editor-inner">
+      <div class="editor-title">Browser editor, saves on this device. Download updated HTML to make it permanent on GitHub.</div>
+      <div class="editor-actions">
+        <span class="editor-status" id="editorStatus">Edit mode on</span>
+        <button class="editor-btn" id="toggleEditBtn" type="button">Preview</button>
+        <button class="editor-btn" id="addGalleryBtn" type="button">Add photos</button>
+        <button class="editor-btn" id="addResearchBtn" type="button">Add research</button>
+        <button class="editor-btn" id="addPubBtn" type="button">Add publication</button>
+        <button class="editor-btn primary" id="saveBtn" type="button">Save here</button>
+        <button class="editor-btn" id="downloadBtn" type="button">Download HTML</button>
+        <button class="editor-btn" id="exportBtn" type="button">Export backup</button>
+        <button class="editor-btn" id="importBtn" type="button">Import backup</button>
+        <button class="editor-btn danger" id="resetBtn" type="button">Reset</button>
+      </div>
+    </div>
+  </div>
 
   <div class="site-note">
-    <strong>GitHub-friendly version:</strong> edit the <strong>SITE_DATA</strong> section near the top of <strong>index.html</strong>, then commit changes.
+    <strong>Click-to-edit version:</strong> click text while edit mode is on, click images to replace them, then use <strong>Download HTML</strong> and upload that file to GitHub when you want everyone to see the new version.
   </div>
 
   <nav class="nav">
     <div class="nav-inner">
-      <a href="#top" class="brand" id="brandName">Jeewan Gamage</a>
+      <a href="#top" class="brand editable" data-editable="brand">Jeewan Gamage</a>
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#research">Research</a></li>
@@ -771,21 +719,24 @@
   </nav>
 
   <header class="hero" id="top">
-    <img class="hero-bg" id="heroBg" alt="" style="display:none;">
+    <img class="hero-bg editable-image" id="heroBg" alt="Hero background">
     <div class="wrap hero-inner">
       <div>
-        <div class="eyebrow" id="heroEyebrow"></div>
+        <div class="eyebrow editable" data-editable="text" id="heroEyebrow" contenteditable="true">Soil Scientist · Postdoctoral Researcher · Soil Organic Matter</div>
         <h1>
-          <span id="heroFirst"></span>
-          <em id="heroLast"></em>
+          <span class="editable" data-editable="text" id="heroFirst" contenteditable="true">Jeewan</span>
+          <em class="editable" data-editable="text" id="heroLast" contenteditable="true">Gamage</em>
         </h1>
-        <p class="hero-tagline" id="heroTagline"></p>
+        <p class="hero-tagline editable" data-editable="rich" id="heroTagline" contenteditable="true">Advancing the science of soil organic matter, water function, and spectroscopic measurement in agricultural systems, from mechanisms to field-scale translation.</p>
         <div class="hero-actions">
           <a href="#research" class="btn-primary">Explore Research</a>
           <a href="#publications" class="btn-outline">View Publications</a>
         </div>
       </div>
-      <div class="portrait-card" id="portraitCard"></div>
+      <div class="portrait-card editable-image" id="portraitCard">
+        <div class="portrait-empty" id="portraitEmpty">Click to add portrait image</div>
+        <img id="portraitImg" alt="Portrait" style="display:none;">
+      </div>
     </div>
   </header>
 
@@ -793,216 +744,587 @@
     <div class="wrap about-grid">
       <div>
         <div class="label">About</div>
-        <h2 class="section-title" id="aboutTitle"></h2>
-        <div class="about-bio" id="aboutBio"></div>
-        <div class="creds" id="credentials"></div>
+        <h2 class="section-title editable" data-editable="rich" id="aboutTitle" contenteditable="true">Soil Scientist at the Plant–Water Nexus</h2>
+        <div class="about-bio editable" data-editable="container" id="aboutBio">
+          <p contenteditable="true">I am a postdoctoral researcher and soil scientist with expertise in soil organic matter fractionation, solid-state 13C NMR spectroscopy, DRIFTS, and soil function across managed agricultural systems.</p>
+          <p contenteditable="true">My work connects fundamental mechanisms of carbon persistence and transformation with field-scale management questions, especially where soil carbon, nutrient cycling, and water-related functions intersect.</p>
+          <p contenteditable="true">I am particularly interested in building mechanistic, management-sensitive indicators that move beyond bulk carbon metrics toward clearer understanding of agroecosystem resilience.</p>
+        </div>
+        <div class="creds" id="credentials">
+          <div class="cred">
+            <div class="cred-icon">🎓</div>
+            <div>
+              <strong class="editable" data-editable="text" contenteditable="true">Postdoctoral Researcher, Soil Science</strong>
+              <span class="editable" data-editable="text" contenteditable="true">University of Guelph · Soil organic matter · Fractionation</span>
+            </div>
+          </div>
+          <div class="cred">
+            <div class="cred-icon">🔬</div>
+            <div>
+              <strong class="editable" data-editable="text" contenteditable="true">Spectroscopy and SOM Specialist</strong>
+              <span class="editable" data-editable="text" contenteditable="true">Solid-state 13C NMR · DRIFTS · Elemental analysis</span>
+            </div>
+          </div>
+          <div class="cred">
+            <div class="cred-icon">🌱</div>
+            <div>
+              <strong class="editable" data-editable="text" contenteditable="true">Research Focus</strong>
+              <span class="editable" data-editable="text" contenteditable="true">SOM persistence · MAOM and POM · Management effects</span>
+            </div>
+          </div>
+          <div class="cred">
+            <div class="cred-icon">📘</div>
+            <div>
+              <strong class="editable" data-editable="text" contenteditable="true">Teaching and Academic Leadership</strong>
+              <span class="editable" data-editable="text" contenteditable="true">Course design · Research communication · Mentoring</span>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="about-photo" id="aboutPhotoBox"></div>
+      <div class="about-photo editable-image" id="aboutPhotoBox">
+        <div class="image-empty" id="aboutPhotoEmpty">Click to add about photo</div>
+        <img id="aboutPhotoImg" alt="About photo" style="display:none;">
+      </div>
     </div>
   </section>
 
   <section class="section" id="research">
     <div class="wrap">
       <div class="label">Research</div>
-      <h2 class="section-title">Research Programme</h2>
-      <div class="cards" id="researchCards"></div>
+      <h2 class="section-title editable" data-editable="text" contenteditable="true">Research Programme</h2>
+      <div class="cards" id="researchCards">
+        <article class="card">
+          <div class="item-controls"><button class="mini-btn danger" type="button" onclick="removeClosest(this,'.card')">Delete</button></div>
+          <div class="card-num editable" data-editable="text" contenteditable="true">01</div>
+          <div class="card-title editable" data-editable="text" contenteditable="true">Soil Organic Matter Fractionation and Persistence</div>
+          <div class="card-desc editable" data-editable="rich" contenteditable="true">Investigating how management reshapes particulate and mineral-associated organic matter pools, and how those shifts relate to carbon persistence and soil function.</div>
+          <div class="tags">
+            <span class="tag editable" data-editable="text" contenteditable="true">POM</span>
+            <span class="tag editable" data-editable="text" contenteditable="true">MAOM</span>
+            <span class="tag editable" data-editable="text" contenteditable="true">NaI Fractionation</span>
+            <span class="tag editable" data-editable="text" contenteditable="true">Soil Carbon</span>
+          </div>
+        </article>
+        <article class="card">
+          <div class="item-controls"><button class="mini-btn danger" type="button" onclick="removeClosest(this,'.card')">Delete</button></div>
+          <div class="card-num editable" data-editable="text" contenteditable="true">02</div>
+          <div class="card-title editable" data-editable="text" contenteditable="true">Spectroscopy for Mechanistic Soil Understanding</div>
+          <div class="card-desc editable" data-editable="rich" contenteditable="true">Using solid-state 13C NMR, DRIFTS, and related analytical tools to resolve the molecular nature of soil organic matter and management-sensitive compositional changes.</div>
+          <div class="tags">
+            <span class="tag editable" data-editable="text" contenteditable="true">13C NMR</span>
+            <span class="tag editable" data-editable="text" contenteditable="true">DRIFTS</span>
+            <span class="tag editable" data-editable="text" contenteditable="true">Molecular Composition</span>
+            <span class="tag editable" data-editable="text" contenteditable="true">SOM Chemistry</span>
+          </div>
+        </article>
+        <article class="card">
+          <div class="item-controls"><button class="mini-btn danger" type="button" onclick="removeClosest(this,'.card')">Delete</button></div>
+          <div class="card-num editable" data-editable="text" contenteditable="true">03</div>
+          <div class="card-title editable" data-editable="text" contenteditable="true">Management, Water Function, and Resilience</div>
+          <div class="card-desc editable" data-editable="rich" contenteditable="true">Linking management-driven changes in soil organic matter with nutrient and water-related soil functions, with the goal of identifying meaningful indicators of resilience.</div>
+          <div class="tags">
+            <span class="tag editable" data-editable="text" contenteditable="true">Water Function</span>
+            <span class="tag editable" data-editable="text" contenteditable="true">Resilience</span>
+            <span class="tag editable" data-editable="text" contenteditable="true">Grazing</span>
+            <span class="tag editable" data-editable="text" contenteditable="true">Agricultural Soils</span>
+          </div>
+        </article>
+      </div>
     </div>
   </section>
 
   <section class="section section-alt" id="gallery">
     <div class="wrap">
-      <div class="label">Gallery</div>
-      <h2 class="section-title">Photos and Field Work</h2>
-      <div class="gallery-grid" id="galleryGrid"></div>
+      <div class="gallery-toolbar">
+        <div>
+          <div class="label">Gallery</div>
+          <h2 class="section-title editable" data-editable="text" contenteditable="true">Photos and Field Work</h2>
+        </div>
+      </div>
+      <div class="gallery-grid" id="galleryGrid">
+        <div class="gallery-empty" id="galleryEmpty">Use “Add photos” in the top bar to add gallery images.</div>
+      </div>
     </div>
   </section>
 
   <section class="section" id="publications">
     <div class="wrap">
       <div class="label">Publications</div>
-      <h2 class="section-title">Publications and Research Outputs</h2>
-      <div class="pub-list" id="pubList"></div>
+      <h2 class="section-title editable" data-editable="text" contenteditable="true">Publications and Research Outputs</h2>
+      <div class="pub-list" id="pubList">
+        <article class="pub-item">
+          <div class="item-controls"><button class="mini-btn danger" type="button" onclick="removeClosest(this,'.pub-item')">Delete</button></div>
+          <div class="pub-year editable" data-editable="text" contenteditable="true">2024</div>
+          <div>
+            <div class="pub-title editable" data-editable="text" contenteditable="true">DRIFT-NMR-Jeewan et al 2024</div>
+            <div class="pub-authors editable" data-editable="text" contenteditable="true">Gamage, J., et al.</div>
+            <div class="pub-journal editable" data-editable="text" contenteditable="true">Add journal name here</div>
+          </div>
+          <div class="pub-badge paper editable" data-editable="text" contenteditable="true">Journal Article</div>
+        </article>
+        <article class="pub-item">
+          <div class="item-controls"><button class="mini-btn danger" type="button" onclick="removeClosest(this,'.pub-item')">Delete</button></div>
+          <div class="pub-year editable" data-editable="text" contenteditable="true">2026</div>
+          <div>
+            <div class="pub-title editable" data-editable="text" contenteditable="true">Add your current paper or manuscript here</div>
+            <div class="pub-authors editable" data-editable="text" contenteditable="true">Gamage, J., et al.</div>
+            <div class="pub-journal editable" data-editable="text" contenteditable="true">In preparation</div>
+          </div>
+          <div class="pub-badge inprep editable" data-editable="text" contenteditable="true">In Preparation</div>
+        </article>
+      </div>
     </div>
   </section>
 
   <section class="section section-dark" id="plan">
     <div class="wrap">
       <div class="label">Research Timeline</div>
-      <h2 class="section-title">Five-Year Research Programme</h2>
-      <div class="timeline" id="timeline"></div>
+      <h2 class="section-title editable" data-editable="text" contenteditable="true">Five-Year Research Programme</h2>
+      <div class="timeline" id="timeline">
+        <article class="timeline-item">
+          <div class="item-controls"><button class="mini-btn danger" type="button" onclick="removeClosest(this,'.timeline-item')">Delete</button></div>
+          <div class="period editable" data-editable="text" contenteditable="true">Year 1</div>
+          <div class="timeline-title editable" data-editable="text" contenteditable="true">Mechanistic Foundation</div>
+          <ul>
+            <li contenteditable="true" class="editable">Advance SOM fractionation and spectroscopy workflows</li>
+            <li contenteditable="true" class="editable">Develop core publications from current datasets</li>
+            <li contenteditable="true" class="editable">Strengthen links between composition and function</li>
+          </ul>
+        </article>
+        <article class="timeline-item">
+          <div class="item-controls"><button class="mini-btn danger" type="button" onclick="removeClosest(this,'.timeline-item')">Delete</button></div>
+          <div class="period editable" data-editable="text" contenteditable="true">Year 2</div>
+          <div class="timeline-title editable" data-editable="text" contenteditable="true">Cross-System Testing</div>
+          <ul>
+            <li contenteditable="true" class="editable">Compare management systems and soil fractions</li>
+            <li contenteditable="true" class="editable">Refine analytical pipelines and interpretation</li>
+            <li contenteditable="true" class="editable">Build collaborative datasets</li>
+          </ul>
+        </article>
+        <article class="timeline-item">
+          <div class="item-controls"><button class="mini-btn danger" type="button" onclick="removeClosest(this,'.timeline-item')">Delete</button></div>
+          <div class="period editable" data-editable="text" contenteditable="true">Year 3</div>
+          <div class="timeline-title editable" data-editable="text" contenteditable="true">Translation and Prediction</div>
+          <ul>
+            <li contenteditable="true" class="editable">Connect mechanistic results with practical indicators</li>
+            <li contenteditable="true" class="editable">Explore scalable sensing and prediction approaches</li>
+            <li contenteditable="true" class="editable">Expand integrated soil function analysis</li>
+          </ul>
+        </article>
+        <article class="timeline-item">
+          <div class="item-controls"><button class="mini-btn danger" type="button" onclick="removeClosest(this,'.timeline-item')">Delete</button></div>
+          <div class="period editable" data-editable="text" contenteditable="true">Year 4</div>
+          <div class="timeline-title editable" data-editable="text" contenteditable="true">Program Expansion</div>
+          <ul>
+            <li contenteditable="true" class="editable">Lead larger collaborative projects</li>
+            <li contenteditable="true" class="editable">Mentor trainees and publish synthesis work</li>
+            <li contenteditable="true" class="editable">Extend work toward broader agroecosystem resilience questions</li>
+          </ul>
+        </article>
+        <article class="timeline-item">
+          <div class="item-controls"><button class="mini-btn danger" type="button" onclick="removeClosest(this,'.timeline-item')">Delete</button></div>
+          <div class="period editable" data-editable="text" contenteditable="true">Year 5+</div>
+          <div class="timeline-title editable" data-editable="text" contenteditable="true">Research Leadership</div>
+          <ul>
+            <li contenteditable="true" class="editable">Establish a distinctive independent research program</li>
+            <li contenteditable="true" class="editable">Build long-term collaborations</li>
+            <li contenteditable="true" class="editable">Translate work into broader scientific and applied impact</li>
+          </ul>
+        </article>
+      </div>
     </div>
   </section>
 
   <section class="section partners">
     <div class="wrap">
-      <div class="partners-title">Institutional and Collaborative Partners</div>
-      <div class="partner-list" id="partnersList"></div>
+      <div class="partners-title editable" data-editable="text" contenteditable="true">Institutional and Collaborative Partners</div>
+      <div class="partner-list" id="partnersList">
+        <span class="editable" data-editable="text" contenteditable="true">University of Guelph</span>
+        <span class="editable" data-editable="text" contenteditable="true">Elora Research Station</span>
+        <span class="editable" data-editable="text" contenteditable="true">Collaborative Soil and Agronomy Networks</span>
+      </div>
     </div>
   </section>
 
   <section class="section contact" id="contact">
     <div class="wrap">
-      <h2 class="contact-name" id="contactName"></h2>
-      <div class="contact-role" id="contactRole"></div>
-      <a class="contact-email" id="contactEmail" href="#"></a>
-      <div class="contact-location" id="contactLocation"></div>
+      <h2 class="contact-name editable" data-editable="text" id="contactName" contenteditable="true">Jeewan Gamage</h2>
+      <div class="contact-role editable" data-editable="text" contenteditable="true">Soil Scientist · Postdoctoral Researcher · University of Guelph</div>
+      <a class="contact-email editable" data-editable="text" id="contactEmail" contenteditable="true" href="mailto:your.email@uoguelph.ca">your.email@uoguelph.ca</a>
+      <div class="contact-location editable" data-editable="text" contenteditable="true">Guelph, Ontario, Canada</div>
       <div class="socials">
-        <a id="linkRG" href="#" target="_blank" rel="noopener noreferrer">ResearchGate</a>
-        <a id="linkGS" href="#" target="_blank" rel="noopener noreferrer">Google Scholar</a>
-        <a id="linkLI" href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a id="linkUNI" href="#" target="_blank" rel="noopener noreferrer">University Profile</a>
+        <a href="#" class="editable" data-editable="text" contenteditable="true">ResearchGate</a>
+        <a href="#" class="editable" data-editable="text" contenteditable="true">Google Scholar</a>
+        <a href="#" class="editable" data-editable="text" contenteditable="true">LinkedIn</a>
+        <a href="#" class="editable" data-editable="text" contenteditable="true">University Profile</a>
       </div>
     </div>
   </section>
 
   <footer>
-    <div class="wrap" id="footerCopy"></div>
+    <div class="wrap editable" data-editable="text" id="footerCopy" contenteditable="true">© 2026 Jeewan Gamage. All rights reserved.</div>
   </footer>
 
+  <input class="hidden-input" type="file" id="portraitInput" accept="image/*">
+  <input class="hidden-input" type="file" id="heroBgInput" accept="image/*">
+  <input class="hidden-input" type="file" id="aboutPhotoInput" accept="image/*">
+  <input class="hidden-input" type="file" id="galleryInput" accept="image/*" multiple>
+  <input class="hidden-input" type="file" id="importJsonInput" accept="application/json">
+
+  <div id="toast"></div>
+
   <script>
-    function setText(id, value) {
-      document.getElementById(id).textContent = value || "";
+    const STORAGE_KEY = 'jeewan_click_edit_site_v1';
+    let editMode = true;
+
+    function showToast(message, isError = false) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.style.background = isError ? 'var(--danger)' : 'var(--green)';
+      toast.classList.add('show');
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(() => toast.classList.remove('show'), 2400);
     }
 
-    function renderHero() {
-      setText("heroEyebrow", SITE_DATA.hero.eyebrow);
-      setText("heroFirst", SITE_DATA.hero.firstName);
-      setText("heroLast", SITE_DATA.hero.lastName);
-      setText("heroTagline", SITE_DATA.hero.tagline);
-      setText("brandName", `${SITE_DATA.hero.firstName} ${SITE_DATA.hero.lastName}`);
+    function setEditMode(on) {
+      editMode = on;
+      document.body.classList.toggle('edit-mode', on);
+      document.querySelectorAll('[contenteditable]').forEach(el => {
+        el.setAttribute('contenteditable', on ? 'true' : 'false');
+        if (el.tagName === 'A') {
+          el.addEventListener('click', e => {
+            if (editMode) e.preventDefault();
+          });
+        }
+      });
+      document.getElementById('toggleEditBtn').textContent = on ? 'Preview' : 'Edit';
+      document.getElementById('editorStatus').textContent = on ? 'Edit mode on' : 'Preview mode';
+    }
 
-      const bg = document.getElementById("heroBg");
-      if (SITE_DATA.hero.heroBackground) {
-        bg.src = SITE_DATA.hero.heroBackground;
-        bg.style.display = "block";
-      }
+    function serializeState() {
+      return {
+        heroBg: document.getElementById('heroBg').getAttribute('src') || '',
+        portrait: document.getElementById('portraitImg').getAttribute('src') || '',
+        aboutPhoto: document.getElementById('aboutPhotoImg').getAttribute('src') || '',
+        bodyContent: {
+          brand: document.querySelector('.brand').innerHTML,
+          heroEyebrow: document.getElementById('heroEyebrow').innerHTML,
+          heroFirst: document.getElementById('heroFirst').innerHTML,
+          heroLast: document.getElementById('heroLast').innerHTML,
+          heroTagline: document.getElementById('heroTagline').innerHTML,
+          aboutTitle: document.getElementById('aboutTitle').innerHTML,
+          aboutBio: document.getElementById('aboutBio').innerHTML,
+          credentials: document.getElementById('credentials').innerHTML,
+          researchTitle: document.querySelector('#research .section-title').innerHTML,
+          researchCards: document.getElementById('researchCards').innerHTML,
+          galleryTitle: document.querySelector('#gallery .section-title').innerHTML,
+          galleryGrid: document.getElementById('galleryGrid').innerHTML,
+          pubTitle: document.querySelector('#publications .section-title').innerHTML,
+          pubList: document.getElementById('pubList').innerHTML,
+          planTitle: document.querySelector('#plan .section-title').innerHTML,
+          timeline: document.getElementById('timeline').innerHTML,
+          partnersTitle: document.querySelector('.partners-title').innerHTML,
+          partnersList: document.getElementById('partnersList').innerHTML,
+          contactName: document.getElementById('contactName').innerHTML,
+          contactRole: document.querySelector('.contact-role').innerHTML,
+          contactEmail: document.getElementById('contactEmail').textContent,
+          contactLocation: document.querySelector('.contact-location').innerHTML,
+          socials: document.querySelector('.socials').innerHTML,
+          footer: document.getElementById('footerCopy').innerHTML
+        }
+      };
+    }
 
-      const portraitCard = document.getElementById("portraitCard");
-      if (SITE_DATA.hero.heroPortrait) {
-        portraitCard.innerHTML = `<img src="${SITE_DATA.hero.heroPortrait}" alt="${SITE_DATA.hero.firstName} ${SITE_DATA.hero.lastName}">`;
+    function applyState(state) {
+      if (!state || !state.bodyContent) return;
+      document.querySelector('.brand').innerHTML = state.bodyContent.brand || 'Jeewan Gamage';
+      document.getElementById('heroEyebrow').innerHTML = state.bodyContent.heroEyebrow || '';
+      document.getElementById('heroFirst').innerHTML = state.bodyContent.heroFirst || '';
+      document.getElementById('heroLast').innerHTML = state.bodyContent.heroLast || '';
+      document.getElementById('heroTagline').innerHTML = state.bodyContent.heroTagline || '';
+      document.getElementById('aboutTitle').innerHTML = state.bodyContent.aboutTitle || '';
+      document.getElementById('aboutBio').innerHTML = state.bodyContent.aboutBio || '';
+      document.getElementById('credentials').innerHTML = state.bodyContent.credentials || '';
+      document.querySelector('#research .section-title').innerHTML = state.bodyContent.researchTitle || '';
+      document.getElementById('researchCards').innerHTML = state.bodyContent.researchCards || '';
+      document.querySelector('#gallery .section-title').innerHTML = state.bodyContent.galleryTitle || '';
+      document.getElementById('galleryGrid').innerHTML = state.bodyContent.galleryGrid || '';
+      document.querySelector('#publications .section-title').innerHTML = state.bodyContent.pubTitle || '';
+      document.getElementById('pubList').innerHTML = state.bodyContent.pubList || '';
+      document.querySelector('#plan .section-title').innerHTML = state.bodyContent.planTitle || '';
+      document.getElementById('timeline').innerHTML = state.bodyContent.timeline || '';
+      document.querySelector('.partners-title').innerHTML = state.bodyContent.partnersTitle || '';
+      document.getElementById('partnersList').innerHTML = state.bodyContent.partnersList || '';
+      document.getElementById('contactName').innerHTML = state.bodyContent.contactName || '';
+      document.querySelector('.contact-role').innerHTML = state.bodyContent.contactRole || '';
+      document.getElementById('contactEmail').textContent = state.bodyContent.contactEmail || '';
+      document.getElementById('contactEmail').href = state.bodyContent.contactEmail ? `mailto:${state.bodyContent.contactEmail}` : '#';
+      document.querySelector('.contact-location').innerHTML = state.bodyContent.contactLocation || '';
+      document.querySelector('.socials').innerHTML = state.bodyContent.socials || '';
+      document.getElementById('footerCopy').innerHTML = state.bodyContent.footer || '';
+
+      setImage('heroBg', state.heroBg, 'block');
+      setImage('portraitImg', state.portrait, 'block', 'portraitEmpty');
+      setImage('aboutPhotoImg', state.aboutPhoto, 'block', 'aboutPhotoEmpty');
+      normalizeInteractiveElements();
+    }
+
+    function setImage(imgId, src, displayValue = 'block', emptyId = null) {
+      const img = document.getElementById(imgId);
+      if (!img) return;
+      if (src) {
+        img.src = src;
+        img.style.display = displayValue;
+        if (emptyId) document.getElementById(emptyId).style.display = 'none';
       } else {
-        portraitCard.innerHTML = `<div class="portrait-empty">Add portrait image path in SITE_DATA.hero.heroPortrait</div>`;
+        img.removeAttribute('src');
+        img.style.display = 'none';
+        if (emptyId) document.getElementById(emptyId).style.display = 'grid';
       }
     }
 
-    function renderAbout() {
-      setText("aboutTitle", SITE_DATA.about.title);
-      document.getElementById("aboutBio").innerHTML = SITE_DATA.about.bio.map(p => `<p>${p}</p>`).join("");
-
-      const credentials = document.getElementById("credentials");
-      credentials.innerHTML = SITE_DATA.about.credentials.map(c => `
-        <div class="cred">
-          <div class="cred-icon">${c.icon || "•"}</div>
-          <div>
-            <strong>${c.title}</strong>
-            <span>${c.subtitle}</span>
-          </div>
-        </div>
-      `).join("");
-
-      const aboutPhotoBox = document.getElementById("aboutPhotoBox");
-      if (SITE_DATA.about.aboutPhoto) {
-        aboutPhotoBox.classList.remove("empty");
-        aboutPhotoBox.innerHTML = `<img src="${SITE_DATA.about.aboutPhoto}" alt="About photo">`;
-      } else {
-        aboutPhotoBox.classList.add("empty");
-        aboutPhotoBox.innerHTML = `Add image path in SITE_DATA.about.aboutPhoto`;
+    function saveHere() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(serializeState()));
+        showToast('Saved in this browser');
+      } catch (err) {
+        showToast('Could not save, file may be too large', true);
       }
     }
 
-    function renderResearch() {
-      const box = document.getElementById("researchCards");
-      box.innerHTML = SITE_DATA.research.map((item, index) => `
-        <article class="card">
-          <div class="card-num">${String(index + 1).padStart(2, "0")}</div>
-          <div class="card-title">${item.title}</div>
-          <div class="card-desc">${item.desc}</div>
-          <div class="tags">${item.tags.map(tag => `<span class="tag">${tag}</span>`).join("")}</div>
-        </article>
-      `).join("");
+    function loadSavedState() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return;
+        applyState(JSON.parse(raw));
+      } catch (err) {
+        console.error(err);
+      }
     }
 
-    function renderGallery() {
-      const box = document.getElementById("galleryGrid");
-      const usable = SITE_DATA.gallery.filter(item => item.image || item.caption);
+    function resetSite() {
+      if (!confirm('Reset browser-saved changes and go back to the file defaults?')) return;
+      localStorage.removeItem(STORAGE_KEY);
+      location.reload();
+    }
 
-      if (!usable.length) {
-        box.innerHTML = `<div class="empty-block">Add gallery images in SITE_DATA.gallery</div>`;
-        return;
+    function exportBackup() {
+      const blob = new Blob([JSON.stringify(serializeState(), null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'jeewan-site-backup.json';
+      a.click();
+      URL.revokeObjectURL(url);
+      showToast('Backup exported');
+    }
+
+    function importBackup(file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        try {
+          const data = JSON.parse(reader.result);
+          applyState(data);
+          saveHere();
+          showToast('Backup imported');
+        } catch (err) {
+          showToast('Invalid backup file', true);
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    function downloadHtml() {
+      saveHere();
+      const clone = document.documentElement.cloneNode(true);
+      clone.querySelectorAll('script').forEach(s => {
+        if (s.dataset.removeOnExport === 'true') s.remove();
+      });
+      clone.querySelectorAll('.editor-bar, #toast, .hidden-input').forEach(el => el.remove());
+      clone.querySelectorAll('[contenteditable]').forEach(el => el.setAttribute('contenteditable', 'false'));
+      clone.querySelectorAll('.editable, .editable-image').forEach(el => {
+        el.classList.remove('editable');
+        el.classList.remove('editable-image');
+      });
+      clone.querySelectorAll('.item-controls').forEach(el => el.remove());
+      clone.querySelector('.site-note').innerHTML = '<strong>Click-to-edit version:</strong> this file can be re-uploaded to GitHub Pages. Browser-only changes become public after you upload this updated HTML file.';
+      clone.querySelector('body').classList.remove('edit-mode');
+      clone.querySelector('body').classList.add('has-editor');
+      const html = '<!DOCTYPE html>\n' + clone.outerHTML;
+      const blob = new Blob([html], { type: 'text/html' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'index.html';
+      a.click();
+      URL.revokeObjectURL(url);
+      showToast('Updated HTML downloaded');
+    }
+
+    function removeClosest(btn, selector) {
+      if (!editMode) return;
+      const el = btn.closest(selector);
+      if (el) {
+        el.remove();
+        ensureGalleryEmptyState();
       }
+    }
+    window.removeClosest = removeClosest;
 
-      box.innerHTML = usable.map(item => `
-        <figure class="gallery-item">
-          ${item.image ? `<img src="${item.image}" alt="${item.caption || item.category || 'Gallery image'}">` : `<div class="empty-block">Add image path</div>`}
+    async function resizeImage(file, maxSize = 1600, quality = 0.86) {
+      const img = await new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => {
+          const image = new Image();
+          image.onload = () => resolve(image);
+          image.onerror = reject;
+          image.src = reader.result;
+        };
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+
+      const ratio = Math.min(1, maxSize / Math.max(img.width, img.height));
+      const canvas = document.createElement('canvas');
+      canvas.width = Math.round(img.width * ratio);
+      canvas.height = Math.round(img.height * ratio);
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      return canvas.toDataURL('image/jpeg', quality);
+    }
+
+    async function handleSingleImage(file, imgId, emptyId, maxSize = 1600) {
+      if (!file) return;
+      const dataUrl = await resizeImage(file, maxSize);
+      setImage(imgId, dataUrl, 'block', emptyId);
+      saveHere();
+    }
+
+    function makeGalleryItem(src, caption = 'Click to edit caption', category = 'Gallery') {
+      return `
+        <figure class="gallery-item editable-image">
+          <div class="item-controls"><button class="mini-btn danger" type="button" onclick="removeClosest(this,'.gallery-item')">Delete</button></div>
+          <img src="${src}" alt="Gallery image">
           <figcaption class="gallery-copy">
-            <div class="gallery-cat">${item.category || "Gallery"}</div>
-            <div class="gallery-caption">${item.caption || ""}</div>
+            <div class="gallery-cat editable" data-editable="text" contenteditable="true">${category}</div>
+            <div class="gallery-caption editable" data-editable="rich" contenteditable="true">${caption}</div>
           </figcaption>
-        </figure>
-      `).join("");
+        </figure>`;
     }
 
-    function renderPublications() {
-      const typeLabel = { paper: "Journal Article", inprep: "In Preparation", thesis: "Thesis" };
-      const box = document.getElementById("pubList");
-      box.innerHTML = SITE_DATA.publications.map(pub => {
-        const titleHtml = pub.url ? `<a href="${pub.url}" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">${pub.title}</a>` : pub.title;
-        return `
-          <article class="pub-item">
-            <div class="pub-year">${pub.year}</div>
-            <div>
-              <div class="pub-title">${titleHtml}</div>
-              <div class="pub-authors">${pub.authors}</div>
-              <div class="pub-journal">${pub.journal}</div>
-            </div>
-            <div class="pub-badge ${pub.type || 'paper'}">${typeLabel[pub.type] || pub.type || 'Output'}</div>
-          </article>
-        `;
-      }).join("");
+    async function addGalleryFiles(files) {
+      if (!files || !files.length) return;
+      const grid = document.getElementById('galleryGrid');
+      if (document.getElementById('galleryEmpty')) grid.innerHTML = '';
+      for (const file of files) {
+        const src = await resizeImage(file, 1800, 0.84);
+        grid.insertAdjacentHTML('beforeend', makeGalleryItem(src, file.name.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' '), 'Gallery'));
+      }
+      normalizeInteractiveElements();
+      saveHere();
     }
 
-    function renderPlan() {
-      const box = document.getElementById("timeline");
-      box.innerHTML = SITE_DATA.fiveYearPlan.map(block => `
-        <article class="timeline-item">
-          <div class="period">${block.period}</div>
-          <div class="timeline-title">${block.title}</div>
-          <ul>${block.items.map(item => `<li>${item}</li>`).join("")}</ul>
-        </article>
-      `).join("");
+    function ensureGalleryEmptyState() {
+      const grid = document.getElementById('galleryGrid');
+      if (grid.children.length === 0) {
+        grid.innerHTML = '<div class="gallery-empty" id="galleryEmpty">Use “Add photos” in the top bar to add gallery images.</div>';
+      }
     }
 
-    function renderPartners() {
-      const box = document.getElementById("partnersList");
-      box.innerHTML = SITE_DATA.partners.map(p => `<span>${p}</span>`).join("");
+    function addResearchCard() {
+      const grid = document.getElementById('researchCards');
+      const count = grid.querySelectorAll('.card').length + 1;
+      grid.insertAdjacentHTML('beforeend', `
+        <article class="card">
+          <div class="item-controls"><button class="mini-btn danger" type="button" onclick="removeClosest(this,'.card')">Delete</button></div>
+          <div class="card-num editable" data-editable="text" contenteditable="true">${String(count).padStart(2,'0')}</div>
+          <div class="card-title editable" data-editable="text" contenteditable="true">New Research Theme</div>
+          <div class="card-desc editable" data-editable="rich" contenteditable="true">Click here and write your research description.</div>
+          <div class="tags">
+            <span class="tag editable" data-editable="text" contenteditable="true">Tag 1</span>
+            <span class="tag editable" data-editable="text" contenteditable="true">Tag 2</span>
+          </div>
+        </article>`);
+      normalizeInteractiveElements();
+      saveHere();
     }
 
-    function renderContact() {
-      setText("contactName", SITE_DATA.contact.fullName);
-      setText("contactRole", SITE_DATA.contact.role);
-      setText("contactLocation", SITE_DATA.contact.location);
-
-      const email = document.getElementById("contactEmail");
-      email.textContent = SITE_DATA.contact.email;
-      email.href = `mailto:${SITE_DATA.contact.email}`;
-
-      document.getElementById("linkRG").href = SITE_DATA.contact.researchGate || "#";
-      document.getElementById("linkGS").href = SITE_DATA.contact.googleScholar || "#";
-      document.getElementById("linkLI").href = SITE_DATA.contact.linkedIn || "#";
-      document.getElementById("linkUNI").href = SITE_DATA.contact.universityProfile || "#";
-
-      const year = new Date().getFullYear();
-      setText("footerCopy", `© ${year} ${SITE_DATA.contact.fullName}. All rights reserved.`);
+    function addPublication() {
+      const box = document.getElementById('pubList');
+      box.insertAdjacentHTML('beforeend', `
+        <article class="pub-item">
+          <div class="item-controls"><button class="mini-btn danger" type="button" onclick="removeClosest(this,'.pub-item')">Delete</button></div>
+          <div class="pub-year editable" data-editable="text" contenteditable="true">2026</div>
+          <div>
+            <div class="pub-title editable" data-editable="text" contenteditable="true">New publication title</div>
+            <div class="pub-authors editable" data-editable="text" contenteditable="true">Author list</div>
+            <div class="pub-journal editable" data-editable="text" contenteditable="true">Journal or status</div>
+          </div>
+          <div class="pub-badge paper editable" data-editable="text" contenteditable="true">Journal Article</div>
+        </article>`);
+      normalizeInteractiveElements();
+      saveHere();
     }
 
-    renderHero();
-    renderAbout();
-    renderResearch();
-    renderGallery();
-    renderPublications();
-    renderPlan();
-    renderPartners();
-    renderContact();
+    function normalizeInteractiveElements() {
+      document.querySelectorAll('.socials a').forEach(a => {
+        a.addEventListener('click', e => { if (editMode) e.preventDefault(); });
+      });
+      document.querySelectorAll('[contenteditable]').forEach(el => {
+        el.setAttribute('contenteditable', editMode ? 'true' : 'false');
+      });
+      const email = document.getElementById('contactEmail');
+      if (email) {
+        const txt = email.textContent.trim();
+        email.href = txt && txt.includes('@') ? `mailto:${txt}` : '#';
+      }
+    }
+
+    document.getElementById('toggleEditBtn').addEventListener('click', () => setEditMode(!editMode));
+    document.getElementById('saveBtn').addEventListener('click', saveHere);
+    document.getElementById('downloadBtn').addEventListener('click', downloadHtml);
+    document.getElementById('exportBtn').addEventListener('click', exportBackup);
+    document.getElementById('importBtn').addEventListener('click', () => document.getElementById('importJsonInput').click());
+    document.getElementById('resetBtn').addEventListener('click', resetSite);
+    document.getElementById('addGalleryBtn').addEventListener('click', () => document.getElementById('galleryInput').click());
+    document.getElementById('addResearchBtn').addEventListener('click', addResearchCard);
+    document.getElementById('addPubBtn').addEventListener('click', addPublication);
+
+    document.getElementById('portraitCard').addEventListener('click', () => { if (editMode) document.getElementById('portraitInput').click(); });
+    document.getElementById('aboutPhotoBox').addEventListener('click', () => { if (editMode) document.getElementById('aboutPhotoInput').click(); });
+    document.getElementById('heroBg').addEventListener('click', () => { if (editMode) document.getElementById('heroBgInput').click(); });
+    document.getElementById('hero').addEventListener('dblclick', e => {
+      if (!editMode) return;
+      if (e.target.id === 'heroBg' || e.target.closest('.portrait-card')) return;
+      document.getElementById('heroBgInput').click();
+    });
+
+    document.getElementById('portraitInput').addEventListener('change', e => handleSingleImage(e.target.files[0], 'portraitImg', 'portraitEmpty', 1400));
+    document.getElementById('aboutPhotoInput').addEventListener('change', e => handleSingleImage(e.target.files[0], 'aboutPhotoImg', 'aboutPhotoEmpty', 1400));
+    document.getElementById('heroBgInput').addEventListener('change', async e => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const dataUrl = await resizeImage(file, 2200, 0.82);
+      setImage('heroBg', dataUrl, 'block');
+      saveHere();
+    });
+    document.getElementById('galleryInput').addEventListener('change', e => addGalleryFiles(Array.from(e.target.files)));
+    document.getElementById('importJsonInput').addEventListener('change', e => {
+      const file = e.target.files[0];
+      if (file) importBackup(file);
+    });
+
+    document.addEventListener('input', normalizeInteractiveElements);
+    document.addEventListener('keydown', e => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 's') {
+        e.preventDefault();
+        saveHere();
+      }
+    });
+
+    loadSavedState();
+    normalizeInteractiveElements();
+    setEditMode(true);
   </script>
 </body>
 </html>
