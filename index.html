@@ -3,298 +3,450 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jeewan Gamage | Academic Website</title>
+  <title>Jeewan Gamage | Soil Organic Matter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg1:#140c07;
-      --bg2:#2b180c;
-      --panel:#1f130c;
-      --card:#24160d;
-      --accent:#d69a49;
-      --accent-2:#f2c57f;
-      --text:#f5ecdf;
-      --muted:#d8c0a0;
-      --line:rgba(214,154,73,.22);
-      --blue:#2f6df6;
-      --green:#1f8b4c;
-      --red:#c94e4e;
-      --shadow:0 12px 32px rgba(0,0,0,.28);
-      --radius:18px;
+      --bg:#0d0b09;
+      --bg2:#15110d;
+      --panel:rgba(30,24,18,.72);
+      --panel-strong:rgba(39,31,23,.92);
+      --text:#f5efe5;
+      --muted:#c9b7a1;
+      --line:rgba(214,169,103,.18);
+      --gold:#d6a967;
+      --gold2:#f1cf9e;
+      --soil:#7a4b27;
+      --moss:#7ea37a;
+      --blue:#4c8bf5;
+      --green:#2c9b5f;
+      --danger:#d65b5b;
+      --shadow:0 18px 50px rgba(0,0,0,.35);
+      --radius:22px;
+      --hero-bg-image:none;
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
       margin:0;
-      font-family:Arial, Helvetica, sans-serif;
+      font-family:Inter,system-ui,sans-serif;
       color:var(--text);
-      background:linear-gradient(180deg,var(--bg1),var(--bg2));
+      background:
+        radial-gradient(circle at 15% 12%, rgba(126,163,122,.10), transparent 28%),
+        radial-gradient(circle at 82% 18%, rgba(214,169,103,.12), transparent 26%),
+        radial-gradient(circle at 68% 72%, rgba(122,75,39,.18), transparent 24%),
+        linear-gradient(180deg, var(--bg), var(--bg2) 42%, #0d0b09 100%);
+      min-height:100vh;
+      overflow-x:hidden;
     }
-    a{color:inherit}
+    body::before{
+      content:"";
+      position:fixed; inset:0;
+      pointer-events:none;
+      background:linear-gradient(transparent, rgba(255,255,255,.02), transparent), repeating-linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.02) 1px, transparent 1px, transparent 3px);
+      opacity:.18;
+      mix-blend-mode:soft-light;
+      z-index:-1;
+    }
+    a{color:inherit;text-decoration:none}
     img{display:block;max-width:100%}
+    button,input,textarea,select{font:inherit}
     .hidden{display:none!important}
 
-    .editor-bar{
-      position:sticky;top:0;z-index:1000;
-      background:rgba(12,8,5,.95);
-      border-bottom:1px solid var(--line);
-      backdrop-filter:blur(8px);
-    }
-    .editor-inner{
-      max-width:1180px;margin:0 auto;padding:12px 18px;
-      display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
-    }
-    .editor-title{font-weight:700;color:var(--accent-2)}
-    .toolbar{display:flex;gap:8px;flex-wrap:wrap}
-    .btn{
-      border:none;border-radius:12px;padding:10px 14px;cursor:pointer;
-      font-weight:700;font-size:.92rem;background:#2b1d12;color:var(--text);
-      border:1px solid var(--line);
-    }
-    .btn:hover{filter:brightness(1.06)}
-    .btn.primary{background:var(--accent);color:#1a0f08}
-    .btn.blue{background:var(--blue);color:#fff;border-color:transparent}
-    .btn.green{background:var(--green);color:#fff;border-color:transparent}
-    .btn.red{background:var(--red);color:#fff;border-color:transparent}
+    .shell{max-width:1260px;margin:0 auto;padding:0 22px 70px}
 
-    .site{max-width:1180px;margin:0 auto;padding:0 18px 80px}
-    .nav{
-      display:flex;justify-content:space-between;align-items:center;gap:16px;
-      padding:18px 0;border-bottom:1px solid var(--line);
+    .adminbar{
+      position:sticky; top:0; z-index:60;
+      backdrop-filter:blur(16px);
+      background:rgba(10,9,8,.72);
+      border-bottom:1px solid var(--line);
     }
-    .brand{font-family:Georgia, 'Times New Roman', serif;font-size:2rem;font-weight:700;color:var(--accent-2)}
+    .adminbar-inner{
+      max-width:1260px;margin:0 auto;padding:14px 22px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
+    }
+    .brand-wrap{display:flex;flex-direction:column;gap:4px}
+    .brand{
+      font-family:"Cormorant Garamond",serif;
+      font-size:2rem; font-weight:700; line-height:1;
+      color:var(--gold2);
+    }
+    .micro{font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+    .toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    .btn{
+      border:1px solid transparent;
+      border-radius:14px;
+      padding:10px 14px;
+      cursor:pointer;
+      background:rgba(255,255,255,.05);
+      color:var(--text);
+      transition:all .18s ease;
+      font-weight:700;
+      box-shadow:none;
+    }
+    .btn:hover{transform:translateY(-1px);filter:brightness(1.06)}
+    .btn.primary{background:linear-gradient(135deg, var(--gold), #c88539); color:#1c140d}
+    .btn.ghost{background:transparent;border-color:var(--line)}
+    .btn.blue{background:linear-gradient(135deg, #4c8bf5, #366ed5)}
+    .btn.green{background:linear-gradient(135deg, #2ea865, #247b4e)}
+    .btn.danger{background:linear-gradient(135deg, #d65b5b, #bc4343)}
+    .btn.small{padding:8px 11px;font-size:.86rem}
+
+    .editor-drawer{
+      max-width:1260px;margin:14px auto 0;padding:0 22px;
+    }
+    .editor-panel{
+      display:none;
+      background:var(--panel-strong);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:16px;
+    }
+    body.edit-mode .editor-panel{display:block}
+    .editor-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:16px}
+    .stack{display:flex;flex-direction:column;gap:10px}
+    .field{display:flex;flex-direction:column;gap:6px}
+    .field label{color:var(--muted);font-size:.86rem;font-weight:600}
+    .field input,.field textarea,.field select{
+      width:100%;padding:11px 12px;border-radius:14px;border:1px solid var(--line);background:#120f0c;color:var(--text)
+    }
+    .field textarea{min-height:96px;resize:vertical}
+    .hint{font-size:.83rem;line-height:1.55;color:var(--muted)}
+    .status{font-size:.88rem;color:var(--gold2);margin-top:10px}
+
+    .site-nav{
+      display:flex;justify-content:space-between;align-items:center;gap:16px;
+      padding:18px 0 14px;border-bottom:1px solid var(--line);margin-bottom:34px;
+    }
+    .site-title{font-family:"Cormorant Garamond",serif;font-size:2rem;font-weight:700;color:var(--gold2)}
     .nav-links{display:flex;gap:20px;flex-wrap:wrap}
-    .nav-links a{text-decoration:none;font-weight:700;font-size:.92rem;color:var(--text)}
+    .nav-links a{font-weight:700;font-size:.93rem;color:#e7dccf}
 
     .hero{
-      display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center;
-      min-height:72vh;padding:34px 0 50px;
+      position:relative;
+      display:grid;grid-template-columns:1.1fr .9fr;gap:34px;align-items:center;
+      min-height:78vh;padding:34px 0 50px;
+      background:
+        linear-gradient(120deg, rgba(255,255,255,.02), rgba(255,255,255,.01)),
+        var(--hero-bg-image),
+        radial-gradient(circle at 68% 36%, rgba(214,169,103,.12), transparent 30%),
+        radial-gradient(circle at 82% 24%, rgba(126,163,122,.08), transparent 22%);
+      background-size:cover;
+      background-position:center;
+      border-radius:34px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      padding-left:32px; padding-right:32px;
     }
-    .eyebrow{
-      font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);
-      display:flex;gap:12px;align-items:center;
+    .hero::before{
+      content:""; position:absolute; inset:0;
+      background:linear-gradient(90deg, rgba(11,10,8,.82) 0%, rgba(11,10,8,.62) 46%, rgba(11,10,8,.52) 100%);
+      pointer-events:none;
     }
-    .eyebrow:before{content:"";width:34px;height:1px;background:var(--accent)}
-    h1{
-      font-family:Georgia, 'Times New Roman', serif;
-      font-size:clamp(3.2rem,8vw,6rem);line-height:.95;margin:20px 0 18px;
+    .hero > *{position:relative;z-index:1}
+    .eyebrow{display:flex;align-items:center;gap:12px;color:var(--gold);font-family:"IBM Plex Mono",monospace;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase}
+    .eyebrow::before{content:"";width:36px;height:1px;background:var(--gold)}
+    .hero h1{font-family:"Cormorant Garamond",serif;font-size:clamp(3.3rem,7vw,6.8rem);line-height:.94;margin:22px 0 18px}
+    .hero h1 em{display:block;color:var(--gold2);font-style:italic}
+    .hero-copy{font-size:1.1rem;line-height:1.8;color:#f2e8dc;max-width:760px}
+    .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+    .portrait{
+      min-height:500px;position:relative;border-radius:28px;overflow:hidden;
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border:1px solid rgba(214,169,103,.22);
+      box-shadow:inset 0 0 0 1px rgba(255,255,255,.03);
     }
-    h1 em{display:block;color:var(--accent-2);font-style:italic}
-    .hero-text p{font-size:1.08rem;line-height:1.8;color:var(--text);max-width:720px}
-    .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
-    .hero-media{
-      position:relative;min-height:480px;border:2px dashed var(--line);border-radius:24px;
-      overflow:hidden;background:rgba(255,255,255,.03);
-      background-size:cover;background-position:center;
-    }
-    .hero-media img{width:100%;height:100%;object-fit:cover}
-    .placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--muted);text-align:center;padding:18px}
-    .img-action{position:absolute;top:12px;right:12px;z-index:2}
+    .portrait img{width:100%;height:100%;object-fit:cover}
+    .placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:18px;font-family:"IBM Plex Mono",monospace;color:var(--gold);letter-spacing:.08em;text-transform:uppercase}
 
-    section{padding:26px 0}
-    .section-head{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:18px}
-    .kicker{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
-    h2{font-family:Georgia, 'Times New Roman', serif;font-size:2.7rem;line-height:1.1;margin:8px 0 0}
+    section{padding:34px 0}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:18px;flex-wrap:wrap;margin-bottom:18px}
+    .section-kicker{font-family:"IBM Plex Mono",monospace;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+    .section-title{font-family:"Cormorant Garamond",serif;font-size:3rem;line-height:1.05;margin:6px 0 0}
+    .section-sub{max-width:760px;color:var(--muted);line-height:1.7}
 
-    .about{display:grid;grid-template-columns:.9fr 1.1fr;gap:28px}
-    .image-card{position:relative;min-height:400px;border:2px dashed var(--line);border-radius:22px;overflow:hidden;background:rgba(255,255,255,.03)}
-    .image-card img{width:100%;height:100%;object-fit:cover}
-    .about-copy p{line-height:1.85;margin:0 0 14px}
+    .glass{background:var(--panel);border:1px solid var(--line);backdrop-filter:blur(12px);border-radius:var(--radius);box-shadow:var(--shadow)}
+
+    .about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:22px;align-items:start}
+    .about-photo{min-height:450px;position:relative;border-radius:26px;overflow:hidden}
+    .about-photo img{width:100%;height:100%;object-fit:cover}
+    .about-copy{padding:24px}
+    .about-copy p{margin:0 0 14px;color:#eee2d3;line-height:1.82}
 
     .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:var(--shadow)}
-    .card h3{margin:0 0 10px;font-size:1.18rem}
-    .card p{margin:0;line-height:1.7;color:var(--text)}
+    .card{padding:22px;position:relative}
+    .card h3{margin:0 0 10px;font-size:1.14rem}
+    .card p{margin:0;color:#eadfce;line-height:1.72}
+    .meta-row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 0}
+    .chip{padding:6px 10px;border-radius:999px;background:rgba(214,169,103,.10);border:1px solid rgba(214,169,103,.18);font-size:.8rem;color:#e8d2b3}
 
-    .pub-list{display:flex;flex-direction:column;gap:14px}
-    .pub-item{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px 18px;display:grid;grid-template-columns:86px 1fr auto;gap:14px;align-items:start}
-    .pub-year{color:var(--accent);font-weight:700}
-    .pub-main h3{margin:0 0 6px;font-size:1.06rem}
-    .pub-main p{margin:0 0 5px;line-height:1.65}
-    .pub-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
-    .pill-link{display:inline-block;padding:8px 11px;border-radius:999px;text-decoration:none;background:#322014;border:1px solid var(--line);font-size:.88rem;font-weight:700}
+    .pub-list,.updates-list,.blog-list{display:flex;flex-direction:column;gap:12px}
+    .pub-item,.update-item,.blog-item{padding:18px 18px 16px;position:relative}
+    .pub-grid{display:grid;grid-template-columns:90px 1fr auto;gap:14px;align-items:start}
+    .mono{font-family:"IBM Plex Mono",monospace}
+    .pub-year{color:var(--gold)}
+    .pub-main h3,.update-main h3,.blog-main h3{margin:0 0 7px;font-size:1.08rem}
+    .pub-main p,.update-main p,.blog-main p{margin:0 0 6px;color:#e8dccd;line-height:1.68}
+    .pub-links,.item-actions,.card-actions{display:flex;gap:8px;flex-wrap:wrap}
+    .link-btn{padding:8px 12px;border-radius:12px;background:rgba(255,255,255,.06);border:1px solid var(--line);font-weight:700;font-size:.88rem}
+    .tag-type{padding:8px 10px;border-radius:999px;border:1px solid var(--line);color:var(--muted);font-size:.82rem}
+
+    .timeline-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 
     .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-    .gallery-item{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden}
-    .gallery-item .wrap{height:230px;background:rgba(255,255,255,.03)}
-    .gallery-item img{width:100%;height:100%;object-fit:cover}
-    .gallery-item .caption{padding:14px 16px;line-height:1.65}
+    .gallery-item{overflow:hidden;position:relative}
+    .gallery-img{height:240px;background:rgba(255,255,255,.02);position:relative}
+    .gallery-img img{width:100%;height:100%;object-fit:cover}
+    .gallery-meta{padding:14px 16px 18px}
+    .gallery-meta h4{margin:0 0 6px;font-size:1rem}
+    .gallery-meta p{margin:0;color:#eaddce;line-height:1.68}
 
-    .contact-box{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:22px}
-    .contact-box p{margin:0 0 10px;line-height:1.75}
-    .contact-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+    .discussion-wrap{padding:22px}
+    .discussion-note{color:var(--muted);line-height:1.7}
+    .forum-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
 
-    .editable{outline:none;border-radius:8px}
-    body.edit-mode .editable{box-shadow:0 0 0 2px rgba(47,109,246,.55) inset;background:rgba(47,109,246,.08);padding:.12em .24em}
-    body.edit-mode .editable-block{display:block;padding:8px 10px;border-radius:12px}
+    .contact-grid{display:grid;grid-template-columns:1fr .95fr;gap:16px}
+    .contact-card{padding:22px}
+    .contact-card p{margin:0 0 10px;line-height:1.75;color:#eadfce}
 
-    .modal{position:fixed;inset:0;background:rgba(0,0,0,.58);display:none;align-items:center;justify-content:center;padding:20px;z-index:1100}
+    .editable{border-radius:10px;transition:all .15s ease;outline:none}
+    body.edit-mode .editable{box-shadow:0 0 0 1px rgba(76,139,245,.55) inset;background:rgba(76,139,245,.08)}
+    body.edit-mode .editable:hover{box-shadow:0 0 0 2px rgba(76,139,245,.65) inset}
+    body.edit-mode .editable-block{padding:8px 10px}
+    .edit-only{display:none}
+    body.edit-mode .edit-only{display:flex}
+
+    .inline-actions{display:none;gap:8px;position:absolute;top:12px;right:12px;z-index:3;flex-wrap:wrap}
+    body.edit-mode .has-actions:hover .inline-actions{display:flex}
+
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,.62);display:none;align-items:center;justify-content:center;padding:20px;z-index:90}
     .modal.open{display:flex}
-    .modal-card{width:min(700px,100%);background:#1a100a;border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:var(--shadow)}
-    .modal-card h3{margin:0 0 12px}
-    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    label{display:block;font-size:.88rem;color:var(--muted);margin:10px 0 6px}
-    input, textarea{width:100%;padding:11px 12px;border-radius:12px;border:1px solid var(--line);background:#120a06;color:var(--text)}
-    textarea{min-height:110px;resize:vertical}
-    .modal-actions{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;margin-top:16px}
+    .modal-card{width:min(760px, 100%);max-height:88vh;overflow:auto;background:#17120e;border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);padding:18px}
+    .modal-card h3{margin:0 0 8px}
+    .modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .modal-actions{display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap;margin-top:14px}
 
-    .notice{margin-top:10px;font-size:.88rem;color:var(--muted);line-height:1.55}
-    .status{font-size:.88rem;color:var(--accent-2)}
+    .reader-content{white-space:pre-wrap;line-height:1.85;color:#eee2d5}
 
-    @media (max-width: 980px){
-      .hero,.about,.form-row{grid-template-columns:1fr}
+    footer{padding:26px 0 10px;color:var(--muted);font-size:.88rem}
+
+    @media (max-width: 1020px){
+      .hero,.about-grid,.contact-grid,.editor-grid,.timeline-grid{grid-template-columns:1fr}
       .cards,.gallery-grid{grid-template-columns:1fr 1fr}
-      .pub-item{grid-template-columns:1fr}
-      .pub-actions{justify-content:flex-start}
+      .pub-grid{grid-template-columns:1fr}
     }
-    @media (max-width: 700px){
+    @media (max-width: 720px){
       .cards,.gallery-grid{grid-template-columns:1fr}
-      .nav{flex-direction:column;align-items:flex-start}
-      .brand{font-size:1.6rem}
-      h2{font-size:2.2rem}
-      .hero-media,.image-card{min-height:320px}
+      .section-title{font-size:2.35rem}
+      .site-nav{flex-direction:column;align-items:flex-start}
+      .hero{padding:24px}
+      .portrait{min-height:360px}
+      .adminbar-inner{padding:12px 16px}
+      .editor-drawer,.shell{padding-left:16px;padding-right:16px}
     }
   </style>
 </head>
 <body class="edit-mode">
-  <script id="initial-state" type="application/json">
-{
-  "siteTitle": "Jeewan Gamage",
-  "navTitle": "Jeewan Gamage",
-  "theme": {
-    "bg1": "#140c07",
-    "bg2": "#2b180c",
-    "panel": "#1f130c",
-    "card": "#24160d",
-    "accent": "#d69a49",
-    "accent2": "#f2c57f",
-    "text": "#f5ecdf",
-    "muted": "#d8c0a0"
-  },
-  "hero": {
-    "eyebrow": "Soil Scientist · Postdoctoral Researcher · Soil Organic Matter",
-    "firstName": "Jeewan",
-    "lastName": "Gamage",
-    "tagline": "Advancing the science of soil organic matter, water function, and spectroscopic measurement in agricultural systems, from mechanisms to field-scale translation.",
-    "portrait": "",
-    "background": ""
-  },
-  "about": {
-    "title": "About",
-    "body": [
-      "I am a postdoctoral researcher working in soil science, with a focus on soil organic matter chemistry, density fractionation, and spectroscopic approaches including DRIFT and NMR.",
-      "My work connects molecular-level understanding of soil carbon with practical questions in forage systems, grazing management, and soil water function.",
-      "My broader goal is to develop mechanistic and field-relevant insight into how management influences stable and active soil carbon pools."
+  <script id="site-data" type="application/json">{
+    "meta": {
+      "siteTitle": "Jeewan Gamage",
+      "taglineShort": "Soil scientist, postdoctoral researcher, soil organic matter"
+    },
+    "theme": {
+      "gold": "#d6a967",
+      "gold2": "#f1cf9e",
+      "moss": "#7ea37a",
+      "soil": "#7a4b27",
+      "heroBackground": ""
+    },
+    "hero": {
+      "eyebrow": "Soil scientist • postdoctoral researcher • soil organic matter",
+      "firstName": "Jeewan",
+      "lastName": "Gamage",
+      "tagline": "Advancing the science of soil organic matter, spectroscopic characterization, and management-sensitive carbon dynamics in agricultural systems, from mechanisms to field-scale translation.",
+      "portrait": ""
+    },
+    "about": {
+      "title": "Molecular insight for resilient soils",
+      "body": "I am a postdoctoral researcher working in soil science, with a focus on soil organic matter chemistry, density fractionation, and spectroscopic methods including DRIFT and NMR. My work connects molecular-level understanding of soil carbon with practical questions in forage systems, grazing management, and soil water function.\n\nMy broader goal is to develop mechanistic and field-relevant insight into how management influences stable and active soil carbon pools, especially particulate and mineral-associated organic matter. I am also interested in translating advanced measurements into practical indicators that can support resilient agroecosystems.",
+      "image": ""
+    },
+    "research": [
+      {
+        "title": "Soil organic matter fractions",
+        "text": "Mechanistic study of POM and MAOM dynamics under grazing, forage, and nutrient management, with special attention to management-sensitive change before bulk soil responses become obvious.",
+        "tags": ["POM", "MAOM", "Fractionation"]
+      },
+      {
+        "title": "DRIFT and NMR spectroscopy",
+        "text": "Using spectroscopic approaches to resolve molecular shifts in soil organic matter and connect them to carbon stabilization, water function, and management response.",
+        "tags": ["DRIFT", "NMR", "Molecular chemistry"]
+      },
+      {
+        "title": "Field relevance and translation",
+        "text": "Building cleaner bridges between analytical chemistry, agronomy, and soil function so that molecular insight becomes decision-relevant for agricultural management and resilience.",
+        "tags": ["Agronomy", "Water function", "Translation"]
+      }
     ],
-    "photo": ""
-  },
-  "research": [
-    {
-      "title": "Soil Organic Matter and Fractionation",
-      "text": "Research on POM, MAOM, density fractionation, and mechanistic carbon stabilization in managed agricultural systems."
+    "publications": [
+      {
+        "year": "2024",
+        "title": "DRIFT-NMR-Jeewan et al 2024",
+        "authors": "Gamage, J., et al.",
+        "journal": "Add journal name here",
+        "type": "paper",
+        "link": "",
+        "pdf": "",
+        "abstract": "Add a short note or abstract here."
+      }
+    ],
+    "updates": [
+      {
+        "date": "2026-03-31",
+        "title": "Website launched",
+        "text": "The new research website is now live and ready for iterative updates.",
+        "link": ""
+      }
+    ],
+    "blog": [
+      {
+        "date": "2026-03-31",
+        "title": "Why molecular soil information matters",
+        "excerpt": "A short explanation of why soil organic matter chemistry should matter beyond bulk carbon numbers.",
+        "content": "Write full blog text here. You can use this section for essays, outreach posts, lab notes, or thought pieces.",
+        "link": ""
+      }
+    ],
+    "gallery": [],
+    "discussion": {
+      "forumUrl": "",
+      "forumLabel": "Open discussion forum",
+      "giscus": {
+        "repo": "",
+        "repoId": "",
+        "category": "",
+        "categoryId": "",
+        "mapping": "pathname",
+        "theme": "dark_dimmed"
+      }
     },
-    {
-      "title": "Spectroscopy and Molecular Characterization",
-      "text": "Use of DRIFT, solid-state NMR, and related analytical methods to study soil organic matter composition and change."
-    },
-    {
-      "title": "Management, Grazing, and Water Function",
-      "text": "Linking management-sensitive changes in soil carbon pools with water-related soil functions and agroecosystem resilience."
+    "contact": {
+      "email": "your.email@example.com",
+      "location": "Guelph, Ontario, Canada",
+      "scholar": "",
+      "researchgate": "",
+      "linkedin": ""
     }
-  ],
-  "publications": [
-    {
-      "year": "2024",
-      "title": "DRIFT-NMR-Jeewan et al 2024",
-      "authors": "Gamage, J., et al.",
-      "venue": "Add journal name",
-      "link": "",
-      "pdf": ""
-    }
-  ],
-  "gallery": [],
-  "contact": {
-    "email": "your.email@example.com",
-    "location": "Guelph, Ontario, Canada",
-    "role": "Soil Scientist | Postdoctoral Researcher",
-    "researchgate": "",
-    "scholar": "",
-    "linkedin": ""
-  }
-}
-  </script>
+  }</script>
 
-  <div class="editor-bar">
-    <div class="editor-inner">
-      <div>
-        <div class="editor-title">Website editor</div>
-        <div class="status">Edit on the page, then download the updated <strong>index.html</strong> and upload it to GitHub.</div>
+  <div class="adminbar">
+    <div class="adminbar-inner">
+      <div class="brand-wrap">
+        <div class="brand">Soil OM Studio</div>
+        <div class="micro">Clean editable GitHub Pages site, with undo, redo, papers, blog, updates, and discussion hooks</div>
       </div>
       <div class="toolbar">
-        <button class="btn" id="toggleEditBtn">Preview</button>
-        <button class="btn primary" id="themeBtn">Theme & backgrounds</button>
-        <button class="btn primary" id="addPubBtn">Add publication</button>
-        <button class="btn primary" id="addGalleryBtn">Add gallery photos</button>
-        <button class="btn blue" id="saveDraftBtn">Save draft</button>
-        <button class="btn green" id="downloadBtn">Download index.html</button>
-        <button class="btn red" id="resetBtn">Reset</button>
+        <button class="btn ghost" id="toggleEditBtn">Preview</button>
+        <button class="btn ghost" id="undoBtn">Undo</button>
+        <button class="btn ghost" id="redoBtn">Redo</button>
+        <button class="btn ghost" id="themeBtn">Theme & backgrounds</button>
+        <button class="btn ghost" id="forumBtn">Discussion settings</button>
+        <button class="btn" id="saveDraftBtn">Save draft</button>
+        <button class="btn primary" id="downloadBtn">Download index.html</button>
       </div>
     </div>
   </div>
 
-  <div class="site">
-    <nav class="nav">
-      <div class="brand editable" id="navTitle" contenteditable="true"></div>
+  <div class="editor-drawer">
+    <div class="editor-panel">
+      <div class="editor-grid">
+        <div class="stack">
+          <div class="hint">Edit directly on the page. Use the buttons below to add publications, updates, blog posts, and gallery photos. Undo and redo work for each saved action. To publish changes, click <strong>Download index.html</strong>, then upload that file to GitHub and replace your existing <code>index.html</code>.</div>
+          <div class="toolbar">
+            <button class="btn ghost small" id="addPublicationBtn">Add publication</button>
+            <button class="btn ghost small" id="addUpdateBtn">Add update</button>
+            <button class="btn ghost small" id="addBlogBtn">Add blog post</button>
+            <button class="btn ghost small" id="addGalleryBtn">Add gallery photo</button>
+            <button class="btn ghost small" id="addResearchBtn">Add research card</button>
+          </div>
+          <div class="status" id="statusText">Ready.</div>
+        </div>
+        <div class="stack">
+          <div class="field">
+            <label>Quick notes</label>
+            <textarea readonly>Publication links open the real external journal or DOI URL. PDF links open the PDF you provide. Blog posts and updates are built into the site. The discussion section can embed Giscus, which is powered by GitHub Discussions, or you can use a direct forum URL. Per-photo comments on a purely static site need an external discussion link or forum backend.</textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="shell">
+    <nav class="site-nav">
+      <div class="site-title editable" data-bind="meta.siteTitle">Jeewan Gamage</div>
       <div class="nav-links">
         <a href="#about">About</a>
         <a href="#research">Research</a>
         <a href="#publications">Publications</a>
+        <a href="#updates">Updates</a>
+        <a href="#blog">Blog</a>
         <a href="#gallery">Gallery</a>
+        <a href="#discussion">Discussion</a>
         <a href="#contact">Contact</a>
       </div>
     </nav>
 
-    <section class="hero" id="home">
-      <div class="hero-text">
-        <div class="eyebrow editable" id="heroEyebrow" contenteditable="true"></div>
+    <section class="hero has-actions" id="home">
+      <div>
+        <div class="eyebrow editable" data-bind="hero.eyebrow"></div>
         <h1>
-          <span class="editable" id="heroFirst" contenteditable="true"></span>
-          <em class="editable" id="heroLast" contenteditable="true"></em>
+          <span class="editable" data-bind="hero.firstName">Jeewan</span>
+          <em class="editable" data-bind="hero.lastName">Gamage</em>
         </h1>
-        <p class="editable editable-block" id="heroTagline" contenteditable="true"></p>
+        <div class="hero-copy editable editable-block" data-bind="hero.tagline"></div>
         <div class="cta-row">
-          <a class="btn primary" href="#research">Explore Research</a>
-          <a class="btn" href="#publications">View Publications</a>
+          <a class="btn primary" href="#publications">View papers</a>
+          <a class="btn ghost" href="#blog">Read blog</a>
         </div>
       </div>
-      <div class="hero-media" id="heroMedia">
-        <button class="btn blue img-action" id="changePortraitBtn">Change portrait</button>
-        <img id="heroPortrait" class="hidden" alt="Portrait">
-        <div class="placeholder" id="heroPlaceholder">Click “Change portrait” to add an image</div>
+      <div class="portrait">
+        <img id="heroPortraitImg" alt="Portrait" class="hidden">
+        <div class="placeholder" id="heroPortraitPlaceholder">Click change portrait to add an image</div>
+        <div class="inline-actions edit-only">
+          <button class="btn blue small" id="changePortraitBtn">Change portrait</button>
+          <button class="btn danger small" id="clearPortraitBtn">Clear</button>
+        </div>
       </div>
     </section>
 
     <section id="about">
       <div class="section-head">
         <div>
-          <div class="kicker">Profile</div>
-          <h2 class="editable" id="aboutTitle" contenteditable="true"></h2>
+          <div class="section-kicker">About</div>
+          <div class="section-title editable" data-bind="about.title"></div>
         </div>
       </div>
-      <div class="about">
-        <div class="image-card">
-          <button class="btn blue img-action" id="changeAboutBtn">Change image</button>
-          <img id="aboutPhoto" class="hidden" alt="About image">
-          <div class="placeholder" id="aboutPlaceholder">Click “Change image” to add a photo</div>
+      <div class="about-grid">
+        <div class="about-photo glass has-actions">
+          <img id="aboutImg" alt="About image" class="hidden">
+          <div class="placeholder" id="aboutPlaceholder">Click change image to add an image</div>
+          <div class="inline-actions edit-only">
+            <button class="btn blue small" id="changeAboutBtn">Change image</button>
+            <button class="btn danger small" id="clearAboutBtn">Clear</button>
+          </div>
         </div>
-        <div class="about-copy" id="aboutCopy"></div>
+        <div class="about-copy glass editable editable-block" data-bind="about.body"></div>
       </div>
     </section>
 
     <section id="research">
       <div class="section-head">
         <div>
-          <div class="kicker">Research</div>
-          <h2>Research</h2>
+          <div class="section-kicker">Research</div>
+          <div class="section-title">Research directions</div>
+          <div class="section-sub">A cleaner, more future-facing overview of your soil organic matter programme, with room for mechanism, translation, and field relevance.</div>
         </div>
       </div>
       <div class="cards" id="researchGrid"></div>
@@ -303,409 +455,767 @@
     <section id="publications">
       <div class="section-head">
         <div>
-          <div class="kicker">Outputs</div>
-          <h2>Publications</h2>
+          <div class="section-kicker">Publications</div>
+          <div class="section-title">Selected papers and outputs</div>
+          <div class="section-sub">Each paper can have a real publication link and a separate PDF link.</div>
         </div>
       </div>
-      <div class="pub-list" id="pubList"></div>
+      <div class="pub-list" id="publicationList"></div>
+    </section>
+
+    <section id="updates">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">Updates</div>
+          <div class="section-title">Recent updates</div>
+          <div class="section-sub">Use this for short lab, research, teaching, or announcement updates.</div>
+        </div>
+      </div>
+      <div class="updates-list" id="updatesList"></div>
+    </section>
+
+    <section id="blog">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">Blog</div>
+          <div class="section-title">Writing and reflections</div>
+          <div class="section-sub">Use this for longer posts, explainers, field notes, or public-facing soil science writing.</div>
+        </div>
+      </div>
+      <div class="blog-list" id="blogList"></div>
     </section>
 
     <section id="gallery">
       <div class="section-head">
         <div>
-          <div class="kicker">Photos</div>
-          <h2>Gallery</h2>
+          <div class="section-kicker">Gallery</div>
+          <div class="section-title">Field and lab imagery</div>
+          <div class="section-sub">You can also add a separate discussion link for each photo, so visitors can jump to a discussion thread for that image.</div>
         </div>
       </div>
       <div class="gallery-grid" id="galleryGrid"></div>
     </section>
 
+    <section id="discussion">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">Discussion</div>
+          <div class="section-title">Forum and comments</div>
+          <div class="section-sub">This section can either point to an external forum link, or embed Giscus if you configure it with GitHub Discussions.</div>
+        </div>
+      </div>
+      <div class="glass discussion-wrap">
+        <div class="discussion-note" id="discussionNote"></div>
+        <div class="forum-links" id="forumLinks"></div>
+        <div id="giscusBox" style="margin-top:18px"></div>
+      </div>
+    </section>
+
     <section id="contact">
       <div class="section-head">
         <div>
-          <div class="kicker">Contact</div>
-          <h2>Contact</h2>
+          <div class="section-kicker">Contact</div>
+          <div class="section-title">Get in touch</div>
         </div>
       </div>
-      <div class="contact-box">
-        <p><strong class="editable" id="contactRole" contenteditable="true"></strong></p>
-        <p>Email: <span class="editable" id="contactEmail" contenteditable="true"></span></p>
-        <p>Location: <span class="editable" id="contactLocation" contenteditable="true"></span></p>
-        <div class="contact-links" id="contactLinks"></div>
+      <div class="contact-grid">
+        <div class="glass contact-card">
+          <p><strong>Email:</strong> <span class="editable" data-bind="contact.email"></span></p>
+          <p><strong>Location:</strong> <span class="editable" data-bind="contact.location"></span></p>
+          <div class="contact-links" id="contactLinks"></div>
+        </div>
+        <div class="glass contact-card">
+          <p><strong>Use this site for:</strong> publications, blog posts, updates, gallery highlights, and discussion pointers.</p>
+          <p><strong>Editing workflow:</strong> edit on the page, save draft, download <code>index.html</code>, upload to GitHub.</p>
+        </div>
       </div>
-      <div class="notice">This is a static GitHub Pages site. To make changes live, download the updated <strong>index.html</strong> and upload it to your GitHub repository.</div>
     </section>
+
+    <footer>
+      Built as a single editable GitHub Pages file for a clean, future-facing soil organic matter website.
+    </footer>
   </div>
 
-  <input type="file" id="heroInput" accept="image/*" class="hidden">
-  <input type="file" id="aboutInput" accept="image/*" class="hidden">
-  <input type="file" id="bgInput" accept="image/*" class="hidden">
-  <input type="file" id="galleryInput" accept="image/*" multiple class="hidden">
+  <input type="file" id="imagePicker" accept="image/*" class="hidden">
 
-  <div class="modal" id="pubModal">
+  <div class="modal" id="itemModal">
     <div class="modal-card">
-      <h3 id="pubModalTitle">Add publication</h3>
-      <label>Year</label>
-      <input id="pubYear" placeholder="2024">
-      <label>Title</label>
-      <input id="pubTitle" placeholder="Paper title">
-      <label>Authors</label>
-      <input id="pubAuthors" placeholder="Gamage, J., et al.">
-      <label>Journal / conference / book</label>
-      <input id="pubVenue" placeholder="Journal name">
-      <label>Publication link or DOI URL</label>
-      <input id="pubLink" placeholder="https://doi.org/... or journal link">
-      <label>Direct PDF link</label>
-      <input id="pubPdf" placeholder="papers/my-paper.pdf or full URL">
+      <h3 id="itemModalTitle">Edit item</h3>
+      <div id="itemModalBody"></div>
       <div class="modal-actions">
-        <button class="btn" data-close="#pubModal">Cancel</button>
-        <button class="btn primary" id="savePubBtn">Save publication</button>
+        <button class="btn ghost" data-close-modal>Cancel</button>
+        <button class="btn primary" id="itemModalSave">Save</button>
       </div>
     </div>
   </div>
 
-  <div class="modal" id="themeModal">
+  <div class="modal" id="readerModal">
     <div class="modal-card">
-      <h3>Theme and backgrounds</h3>
-      <div class="form-row">
-        <div>
-          <label>Accent color</label>
-          <input id="themeAccent" type="color">
-        </div>
-        <div>
-          <label>Accent light color</label>
-          <input id="themeAccent2" type="color">
-        </div>
-      </div>
-      <div class="form-row">
-        <div>
-          <label>Background top color</label>
-          <input id="themeBg1" type="color">
-        </div>
-        <div>
-          <label>Background bottom color</label>
-          <input id="themeBg2" type="color">
-        </div>
-      </div>
-      <div class="form-row">
-        <div>
-          <label>Card color</label>
-          <input id="themeCard" type="color">
-        </div>
-        <div>
-          <label>Text color</label>
-          <input id="themeText" type="color">
-        </div>
-      </div>
-      <label>Hero background image URL</label>
-      <input id="heroBgUrl" placeholder="Optional image URL for the hero portrait area background">
+      <h3 id="readerTitle">Post</h3>
+      <div class="micro" id="readerMeta" style="margin-bottom:10px"></div>
+      <div class="reader-content" id="readerContent"></div>
       <div class="modal-actions">
-        <button class="btn blue" id="uploadHeroBgBtn">Upload hero background</button>
-        <button class="btn" id="clearHeroBgBtn">Clear hero background</button>
-        <button class="btn" data-close="#themeModal">Cancel</button>
-        <button class="btn primary" id="applyThemeBtn">Apply changes</button>
+        <button class="btn ghost" data-close-reader>Close</button>
       </div>
     </div>
   </div>
 
-  <script>
-    const STORAGE_KEY = 'jeewan-normal-editable-site-v1';
-    const DEFAULT_STATE = JSON.parse(document.getElementById('initial-state').textContent);
-    let state = loadState();
-    let pubEditIndex = -1;
+<script>
+(function(){
+  const DEFAULT_STATE = JSON.parse(document.getElementById('site-data').textContent);
+  const STORAGE_KEY = 'jeewan_som_site_state_v1';
+  const HISTORY_LIMIT = 80;
+  let state = loadState();
+  let history = [JSON.stringify(state)];
+  let historyIndex = 0;
+  let currentImageTarget = null;
+  let modalSaveHandler = null;
 
-    function deepClone(obj){ return JSON.parse(JSON.stringify(obj)); }
-    function loadState(){
-      try{
-        const saved = localStorage.getItem(STORAGE_KEY);
-        return saved ? JSON.parse(saved) : deepClone(DEFAULT_STATE);
-      }catch(e){
-        return deepClone(DEFAULT_STATE);
-      }
+  const q = (s, root=document) => root.querySelector(s);
+  const qa = (s, root=document) => Array.from(root.querySelectorAll(s));
+
+  function loadState(){
+    try{
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if(saved) return JSON.parse(saved);
+    }catch(err){}
+    return structuredClone(DEFAULT_STATE);
+  }
+
+  function structuredClone(obj){ return JSON.parse(JSON.stringify(obj)); }
+
+  function saveToBrowser(message='Saved draft in this browser.'){
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    setStatus(message);
+  }
+
+  function setStatus(message){ q('#statusText').textContent = message; }
+
+  function pushHistory(message='Change saved.'){
+    const serial = JSON.stringify(state);
+    if(history[historyIndex] === serial){
+      saveToBrowser(message);
+      return;
     }
-    function saveState(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
-    function escapeHtml(s=''){ return String(s).replace(/[&<>\"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
-    function linkButton(label, href){ return href ? `<a class="pill-link" href="${escapeHtml(href)}" target="_blank" rel="noopener">${label}</a>` : ''; }
+    history = history.slice(0, historyIndex + 1);
+    history.push(serial);
+    if(history.length > HISTORY_LIMIT) history.shift();
+    historyIndex = history.length - 1;
+    saveToBrowser(message);
+    updateUndoRedo();
+  }
 
-    function applyTheme(){
-      document.documentElement.style.setProperty('--bg1', state.theme.bg1);
-      document.documentElement.style.setProperty('--bg2', state.theme.bg2);
-      document.documentElement.style.setProperty('--panel', state.theme.panel || '#1f130c');
-      document.documentElement.style.setProperty('--card', state.theme.card);
-      document.documentElement.style.setProperty('--accent', state.theme.accent);
-      document.documentElement.style.setProperty('--accent-2', state.theme.accent2);
-      document.documentElement.style.setProperty('--text', state.theme.text);
-      document.documentElement.style.setProperty('--muted', state.theme.muted || '#d8c0a0');
-      document.body.style.background = `linear-gradient(180deg, ${state.theme.bg1}, ${state.theme.bg2})`;
-      const heroMedia = document.getElementById('heroMedia');
-      heroMedia.style.backgroundImage = state.hero.background ? `linear-gradient(rgba(0,0,0,.18), rgba(0,0,0,.18)), url('${state.hero.background}')` : 'none';
-      heroMedia.style.backgroundSize = 'cover';
-      heroMedia.style.backgroundPosition = 'center';
-    }
+  function updateUndoRedo(){
+    q('#undoBtn').disabled = historyIndex <= 0;
+    q('#redoBtn').disabled = historyIndex >= history.length - 1;
+  }
 
-    function render(){
-      applyTheme();
-      document.title = `${state.siteTitle} | Academic Website`;
-      document.getElementById('navTitle').textContent = state.navTitle;
-      document.getElementById('heroEyebrow').textContent = state.hero.eyebrow;
-      document.getElementById('heroFirst').textContent = state.hero.firstName;
-      document.getElementById('heroLast').textContent = state.hero.lastName;
-      document.getElementById('heroTagline').textContent = state.hero.tagline;
-      document.getElementById('aboutTitle').textContent = state.about.title;
-      document.getElementById('contactRole').textContent = state.contact.role;
-      document.getElementById('contactEmail').textContent = state.contact.email;
-      document.getElementById('contactLocation').textContent = state.contact.location;
+  function undo(){
+    if(historyIndex <= 0) return;
+    historyIndex -= 1;
+    state = JSON.parse(history[historyIndex]);
+    renderAll();
+    saveToBrowser('Undid last action.');
+    updateUndoRedo();
+  }
 
-      const heroImg = document.getElementById('heroPortrait');
-      const heroPlaceholder = document.getElementById('heroPlaceholder');
-      if(state.hero.portrait){ heroImg.src = state.hero.portrait; heroImg.classList.remove('hidden'); heroPlaceholder.classList.add('hidden'); }
-      else { heroImg.removeAttribute('src'); heroImg.classList.add('hidden'); heroPlaceholder.classList.remove('hidden'); }
+  function redo(){
+    if(historyIndex >= history.length - 1) return;
+    historyIndex += 1;
+    state = JSON.parse(history[historyIndex]);
+    renderAll();
+    saveToBrowser('Redid action.');
+    updateUndoRedo();
+  }
 
-      const aboutImg = document.getElementById('aboutPhoto');
-      const aboutPlaceholder = document.getElementById('aboutPlaceholder');
-      if(state.about.photo){ aboutImg.src = state.about.photo; aboutImg.classList.remove('hidden'); aboutPlaceholder.classList.add('hidden'); }
-      else { aboutImg.removeAttribute('src'); aboutImg.classList.add('hidden'); aboutPlaceholder.classList.remove('hidden'); }
+  function pathGet(obj, path){ return path.split('.').reduce((acc,key)=>acc?.[key], obj); }
+  function pathSet(obj, path, value){
+    const parts = path.split('.');
+    let ref = obj;
+    while(parts.length > 1){ ref = ref[parts.shift()]; }
+    ref[parts[0]] = value;
+  }
 
-      const aboutCopy = document.getElementById('aboutCopy');
-      aboutCopy.innerHTML = '';
-      state.about.body.forEach((para, idx) => {
-        const p = document.createElement('p');
-        p.className = 'editable editable-block';
-        p.contentEditable = document.body.classList.contains('edit-mode');
-        p.dataset.aboutIndex = idx;
-        p.textContent = para;
-        aboutCopy.appendChild(p);
-      });
+  function sanitizeText(text){
+    return String(text ?? '').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
 
-      const researchGrid = document.getElementById('researchGrid');
-      researchGrid.innerHTML = '';
-      state.research.forEach((item, idx) => {
-        const card = document.createElement('div');
-        card.className = 'card';
-        card.innerHTML = `
-          <h3 class="editable" contenteditable="${document.body.classList.contains('edit-mode')}" data-research-title="${idx}">${escapeHtml(item.title)}</h3>
-          <p class="editable editable-block" contenteditable="${document.body.classList.contains('edit-mode')}" data-research-text="${idx}">${escapeHtml(item.text)}</p>
-        `;
-        researchGrid.appendChild(card);
-      });
-
-      const pubList = document.getElementById('pubList');
-      pubList.innerHTML = '';
-      state.publications.forEach((pub, idx) => {
-        const item = document.createElement('div');
-        item.className = 'pub-item';
-        item.innerHTML = `
-          <div class="pub-year">${escapeHtml(pub.year)}</div>
-          <div class="pub-main">
-            <h3>${escapeHtml(pub.title)}</h3>
-            <p>${escapeHtml(pub.authors)}</p>
-            <p>${escapeHtml(pub.venue)}</p>
-          </div>
-          <div class="pub-actions">
-            ${linkButton('Journal', pub.link)}
-            ${linkButton('PDF', pub.pdf)}
-            <button class="btn" data-edit-pub="${idx}">Edit</button>
-            <button class="btn red" data-del-pub="${idx}">Delete</button>
-          </div>
-        `;
-        pubList.appendChild(item);
-      });
-
-      const galleryGrid = document.getElementById('galleryGrid');
-      galleryGrid.innerHTML = '';
-      if(state.gallery.length === 0){
-        const empty = document.createElement('div');
-        empty.className = 'card';
-        empty.innerHTML = '<p>No gallery photos yet. Use <strong>Add gallery photos</strong> in the top bar.</p>';
-        galleryGrid.appendChild(empty);
+  function renderBoundText(){
+    qa('[data-bind]').forEach(el => {
+      const value = pathGet(state, el.dataset.bind) ?? '';
+      if(el.classList.contains('editable-block')){
+        el.innerHTML = sanitizeText(value).replace(/\n\n/g,'</p><p>').replace(/\n/g,'<br>');
+        if(!el.innerHTML.startsWith('<p>')) el.innerHTML = `<p>${el.innerHTML}</p>`;
       } else {
-        state.gallery.forEach((g, idx) => {
-          const item = document.createElement('div');
-          item.className = 'gallery-item';
-          item.innerHTML = `
-            <div class="wrap"><img src="${escapeHtml(g.src)}" alt="Gallery image"></div>
-            <div class="caption">
-              <div class="editable editable-block" contenteditable="${document.body.classList.contains('edit-mode')}" data-gallery-caption="${idx}">${escapeHtml(g.caption || '')}</div>
-              <div style="margin-top:10px"><button class="btn red" data-del-gallery="${idx}">Delete photo</button></div>
-            </div>
-          `;
-          galleryGrid.appendChild(item);
-        });
+        el.textContent = value;
       }
+      if(document.body.classList.contains('edit-mode')){
+        el.setAttribute('contenteditable', 'true');
+        el.setAttribute('spellcheck', 'true');
+      } else {
+        el.removeAttribute('contenteditable');
+      }
+    });
+  }
 
-      const contactLinks = document.getElementById('contactLinks');
-      contactLinks.innerHTML = '';
-      [['ResearchGate', state.contact.researchgate], ['Google Scholar', state.contact.scholar], ['LinkedIn', state.contact.linkedin]].forEach(([label, href]) => {
-        if(href){
-          const a = document.createElement('a');
-          a.className = 'pill-link';
-          a.href = href; a.target = '_blank'; a.rel = 'noopener'; a.textContent = label;
-          contactLinks.appendChild(a);
-        }
-      });
+  function renderTheme(){
+    document.documentElement.style.setProperty('--gold', state.theme.gold);
+    document.documentElement.style.setProperty('--gold2', state.theme.gold2);
+    document.documentElement.style.setProperty('--moss', state.theme.moss);
+    document.documentElement.style.setProperty('--soil', state.theme.soil);
+    document.documentElement.style.setProperty('--hero-bg-image', state.theme.heroBackground ? `url(${state.theme.heroBackground})` : 'none');
+  }
+
+  function renderImages(){
+    renderImageSlot('#heroPortraitImg', '#heroPortraitPlaceholder', state.hero.portrait);
+    renderImageSlot('#aboutImg', '#aboutPlaceholder', state.about.image);
+  }
+
+  function renderImageSlot(imgSel, placeholderSel, src){
+    const img = q(imgSel), ph = q(placeholderSel);
+    if(src){ img.src = src; img.classList.remove('hidden'); ph.classList.add('hidden'); }
+    else { img.removeAttribute('src'); img.classList.add('hidden'); ph.classList.remove('hidden'); }
+  }
+
+  function renderResearch(){
+    const root = q('#researchGrid');
+    root.innerHTML = '';
+    state.research.forEach((item, i) => {
+      const card = document.createElement('article');
+      card.className = 'glass card has-actions';
+      card.innerHTML = `
+        <div class="inline-actions edit-only">
+          <button class="btn small blue" data-edit-research="${i}">Edit</button>
+          <button class="btn small danger" data-delete-research="${i}">Delete</button>
+        </div>
+        <h3>${sanitizeText(item.title)}</h3>
+        <p>${sanitizeText(item.text)}</p>
+        <div class="meta-row">${(item.tags||[]).map(t=>`<span class="chip">${sanitizeText(t)}</span>`).join('')}</div>`;
+      root.appendChild(card);
+    });
+  }
+
+  function renderPublications(){
+    const root = q('#publicationList');
+    root.innerHTML = '';
+    state.publications.forEach((item, i) => {
+      const article = document.createElement('article');
+      article.className = 'glass pub-item has-actions';
+      const linkBtns = [];
+      if(item.link) linkBtns.push(`<a class="link-btn" href="${item.link}" target="_blank" rel="noopener">Journal</a>`);
+      if(item.pdf) linkBtns.push(`<a class="link-btn" href="${item.pdf}" target="_blank" rel="noopener">PDF</a>`);
+      if(item.abstract) linkBtns.push(`<button class="link-btn" data-read-abstract="${i}">Abstract</button>`);
+      article.innerHTML = `
+        <div class="inline-actions edit-only">
+          <button class="btn small blue" data-edit-publication="${i}">Edit</button>
+          <button class="btn small danger" data-delete-publication="${i}">Delete</button>
+        </div>
+        <div class="pub-grid">
+          <div class="pub-year mono">${sanitizeText(item.year)}</div>
+          <div class="pub-main">
+            <h3>${sanitizeText(item.title)}</h3>
+            <p>${sanitizeText(item.authors)}</p>
+            <p><span class="mono">${sanitizeText(item.journal)}</span></p>
+            <div class="pub-links">${linkBtns.join('')}</div>
+          </div>
+          <div class="tag-type">${sanitizeText(item.type || 'paper')}</div>
+        </div>`;
+      root.appendChild(article);
+    });
+  }
+
+  function renderUpdates(){
+    const root = q('#updatesList');
+    root.innerHTML = '';
+    state.updates.forEach((item, i) => {
+      const link = item.link ? `<a class="link-btn" href="${item.link}" target="_blank" rel="noopener">Open link</a>` : '';
+      const article = document.createElement('article');
+      article.className = 'glass update-item has-actions';
+      article.innerHTML = `
+        <div class="inline-actions edit-only">
+          <button class="btn small blue" data-edit-update="${i}">Edit</button>
+          <button class="btn small danger" data-delete-update="${i}">Delete</button>
+        </div>
+        <div class="update-main">
+          <div class="mono" style="color:var(--gold);margin-bottom:6px">${sanitizeText(item.date)}</div>
+          <h3>${sanitizeText(item.title)}</h3>
+          <p>${sanitizeText(item.text)}</p>
+          <div class="pub-links">${link}</div>
+        </div>`;
+      root.appendChild(article);
+    });
+  }
+
+  function renderBlog(){
+    const root = q('#blogList');
+    root.innerHTML = '';
+    state.blog.forEach((item, i) => {
+      const ext = item.link ? `<a class="link-btn" href="${item.link}" target="_blank" rel="noopener">External link</a>` : '';
+      const article = document.createElement('article');
+      article.className = 'glass blog-item has-actions';
+      article.innerHTML = `
+        <div class="inline-actions edit-only">
+          <button class="btn small blue" data-edit-blog="${i}">Edit</button>
+          <button class="btn small danger" data-delete-blog="${i}">Delete</button>
+        </div>
+        <div class="blog-main">
+          <div class="mono" style="color:var(--gold);margin-bottom:6px">${sanitizeText(item.date)}</div>
+          <h3>${sanitizeText(item.title)}</h3>
+          <p>${sanitizeText(item.excerpt)}</p>
+          <div class="pub-links">
+            <button class="link-btn" data-read-blog="${i}">Read post</button>
+            ${ext}
+          </div>
+        </div>`;
+      root.appendChild(article);
+    });
+  }
+
+  function renderGallery(){
+    const root = q('#galleryGrid');
+    root.innerHTML = '';
+    if(!state.gallery.length){
+      root.innerHTML = `<div class="glass gallery-item" style="padding:24px;grid-column:1/-1"><div class="section-sub">No gallery images yet. Use <strong>Add gallery photo</strong> in edit mode.</div></div>`;
+      return;
     }
+    state.gallery.forEach((item, i) => {
+      const article = document.createElement('article');
+      article.className = 'glass gallery-item has-actions';
+      const discuss = item.discussUrl ? `<a class="link-btn" href="${item.discussUrl}" target="_blank" rel="noopener">Discuss photo</a>` : '';
+      article.innerHTML = `
+        <div class="inline-actions edit-only">
+          <button class="btn small blue" data-edit-gallery="${i}">Edit</button>
+          <button class="btn small danger" data-delete-gallery="${i}">Delete</button>
+        </div>
+        <div class="gallery-img">${item.src ? `<img src="${item.src}" alt="${sanitizeText(item.title || 'Gallery image')}">` : ''}</div>
+        <div class="gallery-meta">
+          <h4>${sanitizeText(item.title || 'Untitled image')}</h4>
+          <p>${sanitizeText(item.caption || '')}</p>
+          <div class="pub-links" style="margin-top:10px">${discuss}</div>
+        </div>`;
+      root.appendChild(article);
+    });
+  }
 
-    function syncEditableToState(){
-      state.navTitle = document.getElementById('navTitle').textContent.trim();
-      state.hero.eyebrow = document.getElementById('heroEyebrow').textContent.trim();
-      state.hero.firstName = document.getElementById('heroFirst').textContent.trim();
-      state.hero.lastName = document.getElementById('heroLast').textContent.trim();
-      state.hero.tagline = document.getElementById('heroTagline').textContent.trim();
-      state.about.title = document.getElementById('aboutTitle').textContent.trim();
-      state.contact.role = document.getElementById('contactRole').textContent.trim();
-      state.contact.email = document.getElementById('contactEmail').textContent.trim();
-      state.contact.location = document.getElementById('contactLocation').textContent.trim();
-
-      document.querySelectorAll('[data-about-index]').forEach(el => { state.about.body[Number(el.dataset.aboutIndex)] = el.textContent.trim(); });
-      document.querySelectorAll('[data-research-title]').forEach(el => { state.research[Number(el.dataset.researchTitle)].title = el.textContent.trim(); });
-      document.querySelectorAll('[data-research-text]').forEach(el => { state.research[Number(el.dataset.researchText)].text = el.textContent.trim(); });
-      document.querySelectorAll('[data-gallery-caption]').forEach(el => { state.gallery[Number(el.dataset.galleryCaption)].caption = el.textContent.trim(); });
+  function renderDiscussion(){
+    const note = q('#discussionNote');
+    const links = q('#forumLinks');
+    const box = q('#giscusBox');
+    links.innerHTML = '';
+    box.innerHTML = '';
+    if(state.discussion.forumUrl){
+      links.innerHTML += `<a class="btn ghost" href="${state.discussion.forumUrl}" target="_blank" rel="noopener">${sanitizeText(state.discussion.forumLabel || 'Open forum')}</a>`;
     }
-
-    function setEditMode(enabled){
-      document.body.classList.toggle('edit-mode', enabled);
-      document.getElementById('toggleEditBtn').textContent = enabled ? 'Preview' : 'Edit';
-      document.querySelectorAll('.editable').forEach(el => { el.contentEditable = enabled; });
-      render();
+    const g = state.discussion.giscus || {};
+    const giscusReady = g.repo && g.repoId && g.category && g.categoryId;
+    if(giscusReady){
+      note.innerHTML = 'Comments are enabled below with Giscus. Visitors need a GitHub account to participate.';
+      const script = document.createElement('script');
+      script.src = 'https://giscus.app/client.js';
+      script.async = true;
+      script.crossOrigin = 'anonymous';
+      script.setAttribute('data-repo', g.repo);
+      script.setAttribute('data-repo-id', g.repoId);
+      script.setAttribute('data-category', g.category);
+      script.setAttribute('data-category-id', g.categoryId);
+      script.setAttribute('data-mapping', g.mapping || 'pathname');
+      script.setAttribute('data-strict', '0');
+      script.setAttribute('data-reactions-enabled', '1');
+      script.setAttribute('data-emit-metadata', '0');
+      script.setAttribute('data-input-position', 'top');
+      script.setAttribute('data-theme', g.theme || 'dark_dimmed');
+      script.setAttribute('data-lang', 'en');
+      box.appendChild(script);
+    } else {
+      note.innerHTML = 'Discussion is not configured yet. You can add a direct forum URL, or configure Giscus in <strong>Discussion settings</strong>. Giscus is powered by GitHub Discussions, and Discussions must be enabled for the repository.';
     }
+  }
 
-    function openModal(sel){ document.querySelector(sel).classList.add('open'); }
-    function closeModal(sel){ document.querySelector(sel).classList.remove('open'); }
-
-    function readImage(file, callback){
-      if(!file) return;
-      const reader = new FileReader();
-      reader.onload = () => callback(reader.result);
-      reader.readAsDataURL(file);
-    }
-
-    function exportHtml(){
-      syncEditableToState();
-      const clone = document.documentElement.cloneNode(true);
-      const stateScript = clone.querySelector('#initial-state');
-      stateScript.textContent = '\n' + JSON.stringify(state, null, 2) + '\n  ';
-      const serializer = '<!DOCTYPE html>\n' + clone.outerHTML;
-      const blob = new Blob([serializer], {type:'text/html'});
+  function renderContact(){
+    const root = q('#contactLinks');
+    root.innerHTML = '';
+    const links = [
+      ['Google Scholar', state.contact.scholar],
+      ['ResearchGate', state.contact.researchgate],
+      ['LinkedIn', state.contact.linkedin]
+    ].filter(([,url]) => url);
+    if(!links.length){ root.innerHTML = '<span class="section-sub">Add Scholar, ResearchGate, or LinkedIn links in edit mode.</span>'; return; }
+    links.forEach(([label,url]) => {
       const a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = 'index.html';
-      a.click();
-      setTimeout(() => URL.revokeObjectURL(a.href), 1000);
-    }
-
-    function fillThemeModal(){
-      document.getElementById('themeAccent').value = state.theme.accent;
-      document.getElementById('themeAccent2').value = state.theme.accent2;
-      document.getElementById('themeBg1').value = state.theme.bg1;
-      document.getElementById('themeBg2').value = state.theme.bg2;
-      document.getElementById('themeCard').value = state.theme.card;
-      document.getElementById('themeText').value = state.theme.text;
-      document.getElementById('heroBgUrl').value = state.hero.background && !state.hero.background.startsWith('data:') ? state.hero.background : '';
-    }
-
-    document.getElementById('toggleEditBtn').addEventListener('click', () => setEditMode(!document.body.classList.contains('edit-mode')));
-    document.getElementById('saveDraftBtn').addEventListener('click', () => { syncEditableToState(); saveState(); alert('Draft saved in this browser.'); });
-    document.getElementById('downloadBtn').addEventListener('click', exportHtml);
-    document.getElementById('resetBtn').addEventListener('click', () => {
-      if(confirm('Reset to the original default website?')){
-        localStorage.removeItem(STORAGE_KEY);
-        state = deepClone(DEFAULT_STATE);
-        render();
-        saveState();
-      }
+      a.className = 'link-btn'; a.href = url; a.target = '_blank'; a.rel = 'noopener'; a.textContent = label;
+      root.appendChild(a);
     });
+  }
 
-    document.getElementById('changePortraitBtn').addEventListener('click', () => document.getElementById('heroInput').click());
-    document.getElementById('changeAboutBtn').addEventListener('click', () => document.getElementById('aboutInput').click());
-    document.getElementById('addGalleryBtn').addEventListener('click', () => document.getElementById('galleryInput').click());
+  function renderAll(){
+    renderTheme();
+    renderBoundText();
+    renderImages();
+    renderResearch();
+    renderPublications();
+    renderUpdates();
+    renderBlog();
+    renderGallery();
+    renderDiscussion();
+    renderContact();
+    updateEditState();
+  }
 
-    document.getElementById('heroInput').addEventListener('change', e => readImage(e.target.files[0], data => { state.hero.portrait = data; render(); saveState(); }));
-    document.getElementById('aboutInput').addEventListener('change', e => readImage(e.target.files[0], data => { state.about.photo = data; render(); saveState(); }));
-    document.getElementById('bgInput').addEventListener('change', e => readImage(e.target.files[0], data => { state.hero.background = data; applyTheme(); saveState(); }));
-    document.getElementById('galleryInput').addEventListener('change', e => {
-      const files = Array.from(e.target.files || []);
-      if(!files.length) return;
-      let remaining = files.length;
-      files.forEach(file => readImage(file, data => {
-        state.gallery.push({src:data, caption:file.name.replace(/\.[^.]+$/, '')});
-        remaining -= 1;
-        if(remaining === 0){ render(); saveState(); }
-      }));
-      e.target.value = '';
+  function updateEditState(){
+    const isEdit = document.body.classList.contains('edit-mode');
+    q('#toggleEditBtn').textContent = isEdit ? 'Preview' : 'Edit';
+  }
+
+  function bindEditableEvents(){
+    qa('[data-bind]').forEach(el => {
+      el.addEventListener('blur', () => {
+        if(!document.body.classList.contains('edit-mode')) return;
+        const path = el.dataset.bind;
+        const value = el.classList.contains('editable-block') ? el.innerText.trim() : el.textContent.trim();
+        pathSet(state, path, value);
+        pushHistory('Text updated.');
+      });
     });
+  }
 
-    document.getElementById('addPubBtn').addEventListener('click', () => {
-      pubEditIndex = -1;
-      document.getElementById('pubModalTitle').textContent = 'Add publication';
-      ['pubYear','pubTitle','pubAuthors','pubVenue','pubLink','pubPdf'].forEach(id => document.getElementById(id).value = '');
-      openModal('#pubModal');
-    });
+  function openModal(title, html, onSave){
+    q('#itemModalTitle').textContent = title;
+    q('#itemModalBody').innerHTML = html;
+    modalSaveHandler = onSave;
+    q('#itemModal').classList.add('open');
+  }
 
-    document.getElementById('savePubBtn').addEventListener('click', () => {
+  function closeModal(){
+    q('#itemModal').classList.remove('open');
+    modalSaveHandler = null;
+  }
+
+  function openReader(title, meta, content){
+    q('#readerTitle').textContent = title;
+    q('#readerMeta').textContent = meta || '';
+    q('#readerContent').textContent = content || '';
+    q('#readerModal').classList.add('open');
+  }
+
+  function closeReader(){ q('#readerModal').classList.remove('open'); }
+
+  function formVal(id){ return q('#' + id)?.value?.trim() ?? ''; }
+
+  function publicationForm(item={}){
+    return `
+      <div class="modal-grid">
+        <div class="field"><label>Year</label><input id="mfYear" value="${sanitizeText(item.year || new Date().getFullYear())}"></div>
+        <div class="field"><label>Type</label><input id="mfType" value="${sanitizeText(item.type || 'paper')}"></div>
+      </div>
+      <div class="field"><label>Title</label><input id="mfTitle" value="${sanitizeText(item.title || '')}"></div>
+      <div class="field"><label>Authors</label><input id="mfAuthors" value="${sanitizeText(item.authors || '')}"></div>
+      <div class="field"><label>Journal or outlet</label><input id="mfJournal" value="${sanitizeText(item.journal || '')}"></div>
+      <div class="field"><label>Publication link or DOI URL</label><input id="mfLink" value="${sanitizeText(item.link || '')}"></div>
+      <div class="field"><label>Direct PDF URL</label><input id="mfPdf" value="${sanitizeText(item.pdf || '')}"></div>
+      <div class="field"><label>Abstract or note</label><textarea id="mfAbstract">${sanitizeText(item.abstract || '')}</textarea></div>`;
+  }
+
+  function updateForm(item={}){
+    return `
+      <div class="modal-grid">
+        <div class="field"><label>Date</label><input id="ufDate" value="${sanitizeText(item.date || new Date().toISOString().slice(0,10))}"></div>
+        <div class="field"><label>Optional link</label><input id="ufLink" value="${sanitizeText(item.link || '')}"></div>
+      </div>
+      <div class="field"><label>Title</label><input id="ufTitle" value="${sanitizeText(item.title || '')}"></div>
+      <div class="field"><label>Text</label><textarea id="ufText">${sanitizeText(item.text || '')}</textarea></div>`;
+  }
+
+  function blogForm(item={}){
+    return `
+      <div class="modal-grid">
+        <div class="field"><label>Date</label><input id="bfDate" value="${sanitizeText(item.date || new Date().toISOString().slice(0,10))}"></div>
+        <div class="field"><label>Optional external link</label><input id="bfLink" value="${sanitizeText(item.link || '')}"></div>
+      </div>
+      <div class="field"><label>Title</label><input id="bfTitle" value="${sanitizeText(item.title || '')}"></div>
+      <div class="field"><label>Excerpt</label><textarea id="bfExcerpt">${sanitizeText(item.excerpt || '')}</textarea></div>
+      <div class="field"><label>Full content</label><textarea id="bfContent" style="min-height:180px">${sanitizeText(item.content || '')}</textarea></div>`;
+  }
+
+  function researchForm(item={}){
+    return `
+      <div class="field"><label>Title</label><input id="rfTitle" value="${sanitizeText(item.title || '')}"></div>
+      <div class="field"><label>Text</label><textarea id="rfText">${sanitizeText(item.text || '')}</textarea></div>
+      <div class="field"><label>Tags, comma separated</label><input id="rfTags" value="${sanitizeText((item.tags || []).join(', '))}"></div>`;
+  }
+
+  function galleryForm(item={}){
+    return `
+      <div class="field"><label>Title</label><input id="gfTitle" value="${sanitizeText(item.title || '')}"></div>
+      <div class="field"><label>Caption</label><textarea id="gfCaption">${sanitizeText(item.caption || '')}</textarea></div>
+      <div class="field"><label>Discussion URL for this photo</label><input id="gfDiscuss" value="${sanitizeText(item.discussUrl || '')}"></div>
+      <div class="hint">Image changes are done with the file picker after you save this form, or by editing an existing photo and replacing the image.</div>`;
+  }
+
+  function themeForm(){
+    return `
+      <div class="modal-grid">
+        <div class="field"><label>Primary gold</label><input id="tfGold" type="color" value="${state.theme.gold}"></div>
+        <div class="field"><label>Accent gold</label><input id="tfGold2" type="color" value="${state.theme.gold2}"></div>
+        <div class="field"><label>Moss accent</label><input id="tfMoss" type="color" value="${state.theme.moss}"></div>
+        <div class="field"><label>Soil accent</label><input id="tfSoil" type="color" value="${state.theme.soil}"></div>
+      </div>
+      <div class="field"><label>Hero background image</label><div class="toolbar"><button class="btn blue small" id="themeBgPick">Choose image</button><button class="btn danger small" id="themeBgClear">Clear image</button></div></div>
+      <div class="hint">The hero background sits behind the text and portrait area. It is best with dark, wide images.</div>`;
+  }
+
+  function forumForm(){
+    const g = state.discussion.giscus || {};
+    return `
+      <div class="field"><label>Forum URL</label><input id="dsForumUrl" value="${sanitizeText(state.discussion.forumUrl || '')}" placeholder="Optional external discussion page"></div>
+      <div class="field"><label>Forum button label</label><input id="dsForumLabel" value="${sanitizeText(state.discussion.forumLabel || '')}" placeholder="Open discussion forum"></div>
+      <hr style="border:none;border-top:1px solid var(--line);margin:12px 0">
+      <div class="hint">Giscus embeds comments using GitHub Discussions. To use it, enable Discussions on a repository, install the giscus app, and paste the generated values below.</div>
+      <div class="field"><label>Giscus repo, for example owner/repo</label><input id="dsRepo" value="${sanitizeText(g.repo || '')}"></div>
+      <div class="modal-grid">
+        <div class="field"><label>Repo ID</label><input id="dsRepoId" value="${sanitizeText(g.repoId || '')}"></div>
+        <div class="field"><label>Category</label><input id="dsCategory" value="${sanitizeText(g.category || '')}"></div>
+      </div>
+      <div class="modal-grid">
+        <div class="field"><label>Category ID</label><input id="dsCategoryId" value="${sanitizeText(g.categoryId || '')}"></div>
+        <div class="field"><label>Theme</label><input id="dsTheme" value="${sanitizeText(g.theme || 'dark_dimmed')}"></div>
+      </div>`;
+  }
+
+  function attachDynamicModalActions(){
+    const pick = q('#themeBgPick');
+    if(pick) pick.onclick = () => pickImage('themeHeroBackground');
+    const clear = q('#themeBgClear');
+    if(clear) clear.onclick = () => { state.theme.heroBackground = ''; renderTheme(); pushHistory('Hero background cleared.'); };
+  }
+
+  function editPublication(i){
+    openModal(i >= 0 ? 'Edit publication' : 'Add publication', publicationForm(state.publications[i] || {}), () => {
       const item = {
-        year: document.getElementById('pubYear').value.trim(),
-        title: document.getElementById('pubTitle').value.trim(),
-        authors: document.getElementById('pubAuthors').value.trim(),
-        venue: document.getElementById('pubVenue').value.trim(),
-        link: document.getElementById('pubLink').value.trim(),
-        pdf: document.getElementById('pubPdf').value.trim()
+        year: formVal('mfYear'),
+        title: formVal('mfTitle'),
+        authors: formVal('mfAuthors'),
+        journal: formVal('mfJournal'),
+        type: formVal('mfType'),
+        link: formVal('mfLink'),
+        pdf: formVal('mfPdf'),
+        abstract: formVal('mfAbstract')
       };
-      if(!item.title){ alert('Please add a publication title.'); return; }
-      if(pubEditIndex >= 0) state.publications[pubEditIndex] = item;
-      else state.publications.unshift(item);
-      render(); saveState(); closeModal('#pubModal');
+      if(i >= 0) state.publications[i] = item; else state.publications.unshift(item);
+      renderPublications(); closeModal(); pushHistory('Publication updated.');
     });
+  }
 
-    document.getElementById('themeBtn').addEventListener('click', () => { fillThemeModal(); openModal('#themeModal'); });
-    document.getElementById('applyThemeBtn').addEventListener('click', () => {
-      state.theme.accent = document.getElementById('themeAccent').value;
-      state.theme.accent2 = document.getElementById('themeAccent2').value;
-      state.theme.bg1 = document.getElementById('themeBg1').value;
-      state.theme.bg2 = document.getElementById('themeBg2').value;
-      state.theme.card = document.getElementById('themeCard').value;
-      state.theme.text = document.getElementById('themeText').value;
-      const url = document.getElementById('heroBgUrl').value.trim();
-      if(url) state.hero.background = url;
-      applyTheme(); render(); saveState(); closeModal('#themeModal');
+  function editUpdate(i){
+    openModal(i >= 0 ? 'Edit update' : 'Add update', updateForm(state.updates[i] || {}), () => {
+      const item = { date: formVal('ufDate'), title: formVal('ufTitle'), text: formVal('ufText'), link: formVal('ufLink') };
+      if(i >= 0) state.updates[i] = item; else state.updates.unshift(item);
+      renderUpdates(); closeModal(); pushHistory('Update saved.');
     });
-    document.getElementById('uploadHeroBgBtn').addEventListener('click', () => document.getElementById('bgInput').click());
-    document.getElementById('clearHeroBgBtn').addEventListener('click', () => { state.hero.background = ''; applyTheme(); saveState(); });
+  }
 
-    document.addEventListener('click', e => {
-      const closeBtn = e.target.closest('[data-close]');
-      if(closeBtn) closeModal(closeBtn.dataset.close);
-      const editPub = e.target.closest('[data-edit-pub]');
-      if(editPub){
-        pubEditIndex = Number(editPub.dataset.editPub);
-        const pub = state.publications[pubEditIndex];
-        document.getElementById('pubModalTitle').textContent = 'Edit publication';
-        document.getElementById('pubYear').value = pub.year || '';
-        document.getElementById('pubTitle').value = pub.title || '';
-        document.getElementById('pubAuthors').value = pub.authors || '';
-        document.getElementById('pubVenue').value = pub.venue || '';
-        document.getElementById('pubLink').value = pub.link || '';
-        document.getElementById('pubPdf').value = pub.pdf || '';
-        openModal('#pubModal');
-      }
-      const delPub = e.target.closest('[data-del-pub]');
-      if(delPub){
-        const idx = Number(delPub.dataset.delPub);
-        if(confirm('Delete this publication?')){ state.publications.splice(idx,1); render(); saveState(); }
-      }
-      const delGallery = e.target.closest('[data-del-gallery]');
-      if(delGallery){
-        const idx = Number(delGallery.dataset.delGallery);
-        if(confirm('Delete this photo?')){ state.gallery.splice(idx,1); render(); saveState(); }
+  function editBlog(i){
+    openModal(i >= 0 ? 'Edit blog post' : 'Add blog post', blogForm(state.blog[i] || {}), () => {
+      const item = { date: formVal('bfDate'), title: formVal('bfTitle'), excerpt: formVal('bfExcerpt'), content: formVal('bfContent'), link: formVal('bfLink') };
+      if(i >= 0) state.blog[i] = item; else state.blog.unshift(item);
+      renderBlog(); closeModal(); pushHistory('Blog post saved.');
+    });
+  }
+
+  function editResearch(i){
+    openModal(i >= 0 ? 'Edit research card' : 'Add research card', researchForm(state.research[i] || {}), () => {
+      const item = { title: formVal('rfTitle'), text: formVal('rfText'), tags: formVal('rfTags').split(',').map(s=>s.trim()).filter(Boolean) };
+      if(i >= 0) state.research[i] = item; else state.research.push(item);
+      renderResearch(); closeModal(); pushHistory('Research card saved.');
+    });
+  }
+
+  function editGallery(i){
+    const current = state.gallery[i] || {};
+    openModal(i >= 0 ? 'Edit gallery photo' : 'Add gallery photo', galleryForm(current), () => {
+      const item = { ...current, title: formVal('gfTitle'), caption: formVal('gfCaption'), discussUrl: formVal('gfDiscuss') };
+      if(i >= 0) state.gallery[i] = item; else state.gallery.unshift(item);
+      renderGallery(); closeModal(); pushHistory('Gallery details saved.');
+      if(i < 0 || !item.src){
+        pickImage({type:'gallery', index: i < 0 ? 0 : i});
       }
     });
+  }
 
-    document.querySelectorAll('.modal').forEach(modal => {
-      modal.addEventListener('click', e => { if(e.target === modal) modal.classList.remove('open'); });
+  function editTheme(){
+    openModal('Theme and backgrounds', themeForm(), () => {
+      state.theme.gold = formVal('tfGold') || state.theme.gold;
+      state.theme.gold2 = formVal('tfGold2') || state.theme.gold2;
+      state.theme.moss = formVal('tfMoss') || state.theme.moss;
+      state.theme.soil = formVal('tfSoil') || state.theme.soil;
+      renderTheme(); closeModal(); pushHistory('Theme updated.');
     });
+    attachDynamicModalActions();
+  }
 
-    render();
-    applyTheme();
-    setEditMode(true);
-  </script>
+  function editForum(){
+    openModal('Discussion settings', forumForm(), () => {
+      state.discussion.forumUrl = formVal('dsForumUrl');
+      state.discussion.forumLabel = formVal('dsForumLabel');
+      state.discussion.giscus = {
+        repo: formVal('dsRepo'),
+        repoId: formVal('dsRepoId'),
+        category: formVal('dsCategory'),
+        categoryId: formVal('dsCategoryId'),
+        mapping: 'pathname',
+        theme: formVal('dsTheme') || 'dark_dimmed'
+      };
+      renderDiscussion(); closeModal(); pushHistory('Discussion settings updated.');
+    });
+  }
+
+  function confirmDelete(collection, index, label){
+    if(!confirm(`Delete this ${label}?`)) return;
+    state[collection].splice(index, 1);
+    renderAll();
+    pushHistory(`${label} deleted.`);
+  }
+
+  function pickImage(target){
+    currentImageTarget = target;
+    q('#imagePicker').click();
+  }
+
+  async function compressImage(file, maxWidth=1800, quality=.86){
+    const dataUrl = await new Promise((resolve, reject) => {
+      const fr = new FileReader();
+      fr.onload = () => resolve(fr.result);
+      fr.onerror = reject;
+      fr.readAsDataURL(file);
+    });
+    const img = await new Promise((resolve, reject) => {
+      const im = new Image();
+      im.onload = () => resolve(im);
+      im.onerror = reject;
+      im.src = dataUrl;
+    });
+    const scale = Math.min(1, maxWidth / img.width);
+    const canvas = document.createElement('canvas');
+    canvas.width = Math.round(img.width * scale);
+    canvas.height = Math.round(img.height * scale);
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+    return canvas.toDataURL('image/jpeg', quality);
+  }
+
+  q('#imagePicker').addEventListener('change', async (e) => {
+    const file = e.target.files?.[0];
+    if(!file || !currentImageTarget) return;
+    try{
+      setStatus('Processing image...');
+      const src = await compressImage(file);
+      if(currentImageTarget === 'heroPortrait') state.hero.portrait = src;
+      else if(currentImageTarget === 'aboutImage') state.about.image = src;
+      else if(currentImageTarget === 'themeHeroBackground') state.theme.heroBackground = src;
+      else if(typeof currentImageTarget === 'object' && currentImageTarget.type === 'gallery'){
+        const idx = currentImageTarget.index;
+        if(!state.gallery[idx]) state.gallery[idx] = {title:file.name.replace(/\.[^.]+$/,''), caption:'', discussUrl:'', src:''};
+        state.gallery[idx].src = src;
+      }
+      renderAll();
+      pushHistory('Image updated.');
+    } catch(err){
+      console.error(err);
+      setStatus('Image could not be processed.');
+      alert('That image could not be processed. Try a JPG or PNG.');
+    } finally {
+      e.target.value = '';
+      currentImageTarget = null;
+    }
+  });
+
+  function serializeCurrentHtml(){
+    const clone = document.documentElement.cloneNode(true);
+    clone.querySelectorAll('script').forEach(s => {
+      if(s.id !== 'site-data' && !s.textContent.includes('(function(){')){}
+    });
+    clone.querySelector('#site-data').textContent = JSON.stringify(state, null, 2);
+    clone.querySelectorAll('.modal').forEach(m => m.classList.remove('open'));
+    clone.querySelector('body').classList.add('edit-mode');
+    clone.querySelectorAll('script').forEach(script => {
+      if(script.id === 'site-data') return;
+      if(script.src) return;
+    });
+    clone.querySelectorAll('iframe.giscus-frame, .giscus, #__next, grammarly-extension, [data-gramm], [data-gr-ext-installed]').forEach(n => n.remove());
+    return '<!DOCTYPE html>\n' + clone.outerHTML;
+  }
+
+  function downloadHtml(){
+    const html = serializeCurrentHtml();
+    const blob = new Blob([html], {type:'text/html'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = 'index.html';
+    document.body.appendChild(a); a.click(); a.remove();
+    URL.revokeObjectURL(url);
+    setStatus('Downloaded index.html. Upload it to GitHub to publish your changes.');
+  }
+
+  function resetToDefault(){
+    if(!confirm('Reset everything back to the default site?')) return;
+    state = structuredClone(DEFAULT_STATE);
+    renderAll();
+    history = [JSON.stringify(state)];
+    historyIndex = 0;
+    saveToBrowser('Reset to default state.');
+    updateUndoRedo();
+  }
+
+  function toggleEdit(){
+    document.body.classList.toggle('edit-mode');
+    updateEditState();
+    renderBoundText();
+  }
+
+  document.addEventListener('click', (e) => {
+    const t = e.target;
+    if(t.matches('[data-close-modal]')) closeModal();
+    if(t.matches('[data-close-reader]')) closeReader();
+    if(t.dataset.editPublication !== undefined) editPublication(Number(t.dataset.editPublication));
+    if(t.dataset.deletePublication !== undefined) confirmDelete('publications', Number(t.dataset.deletePublication), 'publication');
+    if(t.dataset.readAbstract !== undefined){ const i = Number(t.dataset.readAbstract); openReader(state.publications[i].title, `${state.publications[i].year} • ${state.publications[i].journal}`, state.publications[i].abstract); }
+    if(t.dataset.editUpdate !== undefined) editUpdate(Number(t.dataset.editUpdate));
+    if(t.dataset.deleteUpdate !== undefined) confirmDelete('updates', Number(t.dataset.deleteUpdate), 'update');
+    if(t.dataset.editBlog !== undefined) editBlog(Number(t.dataset.editBlog));
+    if(t.dataset.deleteBlog !== undefined) confirmDelete('blog', Number(t.dataset.deleteBlog), 'blog post');
+    if(t.dataset.readBlog !== undefined){ const i = Number(t.dataset.readBlog); openReader(state.blog[i].title, state.blog[i].date, state.blog[i].content); }
+    if(t.dataset.editResearch !== undefined) editResearch(Number(t.dataset.editResearch));
+    if(t.dataset.deleteResearch !== undefined) confirmDelete('research', Number(t.dataset.deleteResearch), 'research card');
+    if(t.dataset.editGallery !== undefined) editGallery(Number(t.dataset.editGallery));
+    if(t.dataset.deleteGallery !== undefined) confirmDelete('gallery', Number(t.dataset.deleteGallery), 'gallery photo');
+  });
+
+  q('#itemModalSave').addEventListener('click', () => { if(modalSaveHandler) modalSaveHandler(); });
+  q('#toggleEditBtn').addEventListener('click', toggleEdit);
+  q('#undoBtn').addEventListener('click', undo);
+  q('#redoBtn').addEventListener('click', redo);
+  q('#saveDraftBtn').addEventListener('click', () => saveToBrowser('Draft saved in this browser.'));
+  q('#downloadBtn').addEventListener('click', downloadHtml);
+  q('#themeBtn').addEventListener('click', editTheme);
+  q('#forumBtn').addEventListener('click', editForum);
+  q('#addPublicationBtn').addEventListener('click', () => editPublication(-1));
+  q('#addUpdateBtn').addEventListener('click', () => editUpdate(-1));
+  q('#addBlogBtn').addEventListener('click', () => editBlog(-1));
+  q('#addGalleryBtn').addEventListener('click', () => editGallery(-1));
+  q('#addResearchBtn').addEventListener('click', () => editResearch(-1));
+  q('#changePortraitBtn').addEventListener('click', () => pickImage('heroPortrait'));
+  q('#clearPortraitBtn').addEventListener('click', () => { state.hero.portrait=''; renderImages(); pushHistory('Portrait cleared.'); });
+  q('#changeAboutBtn').addEventListener('click', () => pickImage('aboutImage'));
+  q('#clearAboutBtn').addEventListener('click', () => { state.about.image=''; renderImages(); pushHistory('About image cleared.'); });
+
+  // close modals when clicking backdrop
+  q('#itemModal').addEventListener('click', e => { if(e.target === q('#itemModal')) closeModal(); });
+  q('#readerModal').addEventListener('click', e => { if(e.target === q('#readerModal')) closeReader(); });
+
+  renderAll();
+  bindEditableEvents();
+  updateUndoRedo();
+  saveToBrowser('Loaded site state.');
+})();
+</script>
 </body>
 </html>
