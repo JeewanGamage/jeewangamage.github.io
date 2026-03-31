@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jeewan Gamage | Academic Website</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --soil: #1c1208;
+      --soil-mid: #3a2510;
+      --brown: #6b4226;
+      --gold: #c8853a;
+      --gold-light: #e0a952;
+      --straw: #e8c97a;
+      --cream: #f7f2ea;
+      --parchment: #faf8f3;
+      --white: #ffffff;
+      --muted: #7a6048;
+      --teal: #2a6b78;
+      --green: #3d7055;
+      --line: rgba(107,66,38,0.12);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--parchment);
+      color: var(--soil);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    .wrap { width: min(1180px, 92vw); margin: 0 auto; }
+
+    .site-note {
+      background: var(--soil);
+      color: rgba(255,255,255,0.8);
+      padding: 0.7rem 1rem;
+      font-size: 0.85rem;
+      text-align: center;
+    }
+    .site-note strong { color: var(--straw); }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(28,18,8,0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(200,133,58,0.18);
+    }
+    .nav-inner {
+      width: min(1180px, 92vw);
+      margin: 0 auto;
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      text-decoration: none;
+      color: var(--straw);
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    .hero {
+      background: var(--soil);
+      color: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(ellipse 70% 80% at 60% 40%, rgba(58,37,16,0.9) 0%, transparent 70%),
+        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.012) 2px, rgba(255,255,255,0.012) 4px);
+      pointer-events: none;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.18;
+      mix-blend-mode: luminosity;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      min-height: 88vh;
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(260px, 360px);
+      gap: 3rem;
+      align-items: center;
+      padding: 5.5rem 0 4rem;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-bottom: 1.5rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 7vw, 6.5rem);
+      line-height: 1.03;
+      font-weight: 700;
+    }
+    .hero h1 em {
+      display: block;
+      font-style: italic;
+      color: var(--straw);
+    }
+    .hero-tagline {
+      margin-top: 1.5rem;
+      max-width: 58ch;
+      font-size: 1.03rem;
+      color: rgba(255,255,255,0.75);
+    }
+    .hero-actions {
+      margin-top: 2rem;
+      display: flex;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+    }
+    .btn-primary,
+    .btn-outline {
+      display: inline-block;
+      padding: 0.85rem 1.5rem;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--soil);
+    }
+    .btn-primary:hover { background: var(--straw); }
+    .btn-outline {
+      border: 1px solid rgba(255,255,255,0.3);
+      color: var(--cream);
+    }
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+    .portrait-card {
+      position: relative;
+      z-index: 1;
+      border: 1px solid rgba(200,133,58,0.2);
+      background: rgba(255,255,255,0.03);
+      min-height: 420px;
+      overflow: hidden;
+    }
+    .portrait-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .portrait-empty {
+      width: 100%;
+      height: 100%;
+      min-height: 420px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 1.5rem;
+      border: 2px dashed rgba(200,133,58,0.25);
+      color: rgba(232,201,122,0.55);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .section { padding: 5.5rem 0; }
+    .section-alt { background: var(--cream); }
+    .section-dark { background: var(--soil); color: var(--cream); }
+    .label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 0.9rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .label::after {
+      content: "";
+      width: 48px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 2rem;
+    }
+    .section-dark .section-title { color: var(--cream); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .about-bio p {
+      font-size: 0.98rem;
+      line-height: 1.9;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+    .creds {
+      display: grid;
+      gap: 0.8rem;
+      margin-top: 1.8rem;
+    }
+    .cred {
+      display: flex;
+      gap: 0.9rem;
+      align-items: flex-start;
+      padding: 1rem 1.1rem;
+      background: var(--parchment);
+      border-left: 3px solid var(--gold);
+    }
+    .cred-icon { font-size: 1.15rem; }
+    .cred strong {
+      display: block;
+      margin-bottom: 0.1rem;
+      font-size: 0.9rem;
+    }
+    .cred span {
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-family: 'DM Mono', monospace;
+    }
+    .about-photo {
+      background: rgba(200,133,58,0.08);
+      border: 1px solid rgba(200,133,58,0.18);
+      min-height: 520px;
+      overflow: hidden;
+    }
+    .about-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      min-height: 520px;
+    }
+    .about-photo.empty {
+      display: grid;
+      place-items: center;
+      text-align: center;
+      color: rgba(107,66,38,0.5);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 1.5rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1px;
+      background: var(--line);
+    }
+    .card {
+      background: var(--parchment);
+      padding: 1.8rem;
+    }
+    .card-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.2rem;
+      line-height: 1;
+      color: rgba(200,133,58,0.14);
+      margin-bottom: 0.4rem;
+    }
+    .card-title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+    }
+    .card-desc {
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.8;
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 0.9rem;
+    }
+    .tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.66rem;
+      padding: 0.22rem 0.55rem;
+      background: rgba(200,133,58,0.1);
+      color: var(--brown);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 0.6rem;
+    }
+    .gallery-item {
+      background: rgba(200,133,58,0.06);
+      overflow: hidden;
+      border: 1px solid rgba(200,133,58,0.12);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+    }
+    .gallery-copy {
+      padding: 0.9rem 1rem 1rem;
+    }
+    .gallery-cat {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.64rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.35rem;
+    }
+    .gallery-caption {
+      font-size: 0.88rem;
+      color: var(--soil-mid);
+    }
+    .empty-block {
+      padding: 2rem;
+      border: 2px dashed rgba(200,133,58,0.25);
+      text-align: center;
+      color: rgba(107,66,38,0.6);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .pub-list {
+      display: grid;
+      gap: 1px;
+      background: var(--line);
+    }
+    .pub-item {
+      background: var(--parchment);
+      padding: 1.4rem 1.5rem;
+      display: grid;
+      grid-template-columns: 70px 1fr auto;
+      gap: 1rem;
+      align-items: start;
+    }
+    .pub-year {
+      font-family: 'DM Mono', monospace;
+      color: var(--gold);
+      font-size: 0.8rem;
+      padding-top: 0.2rem;
+    }
+    .pub-title {
+      font-size: 0.98rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+    .pub-authors {
+      color: var(--muted);
+      font-size: 0.84rem;
+      margin-bottom: 0.15rem;
+    }
+    .pub-journal {
+      font-family: 'DM Mono', monospace;
+      color: var(--teal);
+      font-size: 0.76rem;
+    }
+    .pub-badge {
+      font-size: 0.63rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 700;
+      padding: 0.25rem 0.55rem;
+      white-space: nowrap;
+      align-self: start;
+    }
+    .paper { background: rgba(42,107,120,0.12); color: var(--teal); }
+    .inprep { background: rgba(200,133,58,0.12); color: var(--brown); }
+    .thesis { background: rgba(61,112,85,0.12); color: var(--green); }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      border-top: 1px solid rgba(200,133,58,0.18);
+      border-bottom: 1px solid rgba(200,133,58,0.18);
+    }
+    .timeline-item {
+      padding: 1.4rem 1.1rem 1.7rem;
+      border-left: 1px solid rgba(200,133,58,0.18);
+    }
+    .timeline-item:first-child { border-left: 3px solid var(--gold); }
+    .period {
+      display: inline-block;
+      margin-bottom: 0.6rem;
+      padding: 0.22rem 0.5rem;
+      background: rgba(200,133,58,0.1);
+      color: var(--gold);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .timeline-title {
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--straw);
+      font-size: 1.08rem;
+      font-weight: 700;
+      margin-bottom: 0.65rem;
+    }
+    .timeline ul {
+      list-style: none;
+      display: grid;
+      gap: 0.4rem;
+    }
+    .timeline li {
+      position: relative;
+      padding-left: 0.9rem;
+      color: rgba(255,255,255,0.72);
+      font-size: 0.8rem;
+      line-height: 1.45;
+    }
+    .timeline li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+    }
+
+    .partners {
+      background: var(--soil-mid);
+      color: var(--cream);
+    }
+    .partners-title {
+      text-align: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(232,200,122,0.55);
+      margin-bottom: 1.8rem;
+    }
+    .partner-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.8rem;
+    }
+    .partner-list span {
+      border: 1px solid rgba(200,133,58,0.25);
+      padding: 0.45rem 1rem;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.75);
+    }
+
+    .contact {
+      text-align: center;
+      background: var(--soil);
+      color: var(--cream);
+    }
+    .contact-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      color: var(--straw);
+      margin-bottom: 0.45rem;
+    }
+    .contact-role {
+      font-family: 'DM Mono', monospace;
+      color: rgba(232,200,122,0.62);
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+    .contact-email {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.55rem;
+      color: var(--straw);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(232,200,122,0.25);
+      padding-bottom: 0.2rem;
+    }
+    .contact-location {
+      margin-top: 0.9rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.08em;
+    }
+    .socials {
+      display: flex;
+      justify-content: center;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+    .socials a {
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 0.45rem 1rem;
+      color: rgba(255,255,255,0.78);
+      font-size: 0.74rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+    .socials a:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    footer {
+      background: rgba(0,0,0,0.32);
+      color: rgba(255,255,255,0.5);
+      padding: 1.2rem 0;
+      font-size: 0.74rem;
+      text-align: center;
+    }
+
+    @media (max-width: 980px) {
+      .hero-inner,
+      .about-grid { grid-template-columns: 1fr; }
+      .timeline { grid-template-columns: 1fr 1fr; }
+      .portrait-card { max-width: 420px; }
+    }
+    @media (max-width: 720px) {
+      .nav-inner { padding: 0.85rem 0; align-items: flex-start; }
+      .nav-links { gap: 0.8rem; }
+      .pub-item { grid-template-columns: 1fr; }
+      .timeline { grid-template-columns: 1fr; }
+      .section { padding: 4.2rem 0; }
+      .hero-inner { min-height: auto; padding: 4rem 0 3rem; }
+      .gallery-item img { height: 220px; }
+    }
+  </style>
+</head>
+<body>
+  <!--
+    ===========================================================
+    EDIT HERE ONLY
+    ===========================================================
+    This file is made for easy GitHub editing.
+
+    1. Change text inside SITE_DATA below.
+    2. Upload images into your repo, then set the image paths.
+    3. Good examples:
+       heroPortrait: "assets/profile.jpg"
+       heroBackground: "assets/hero.jpg"
+       aboutPhoto: "assets/about.jpg"
+       gallery image: "assets/gallery/field-01.jpg"
+
+    If an image path is left empty, the website shows a placeholder.
+    ===========================================================
+  -->
+  <script>
+    const SITE_DATA = {
+      hero: {
+        firstName: "Jeewan",
+        lastName: "Gamage",
+        eyebrow: "Soil Scientist · Postdoctoral Researcher · Soil Organic Matter",
+        tagline: "Advancing the science of soil organic matter, water function, and spectroscopic measurement in agricultural systems, from mechanisms to field-scale translation.",
+        heroPortrait: "",
+        heroBackground: ""
+      },
+      about: {
+        title: "Soil Scientist at the Plant–Water Nexus",
+        bio: [
+          "I am a postdoctoral researcher and soil scientist with expertise in soil organic matter fractionation, solid-state 13C NMR spectroscopy, DRIFTS, and soil function across managed agricultural systems.",
+          "My work connects fundamental mechanisms of carbon persistence and transformation with field-scale management questions, especially where soil carbon, nutrient cycling, and water-related functions intersect.",
+          "I am particularly interested in building mechanistic, management-sensitive indicators that move beyond bulk carbon metrics toward clearer understanding of agroecosystem resilience."
+        ],
+        credentials: [
+          {
+            icon: "🎓",
+            title: "Postdoctoral Researcher, Soil Science",
+            subtitle: "University of Guelph · Soil organic matter · Fractionation"
+          },
+          {
+            icon: "🔬",
+            title: "Spectroscopy and SOM Specialist",
+            subtitle: "Solid-state 13C NMR · DRIFTS · Elemental analysis"
+          },
+          {
+            icon: "🌱",
+            title: "Research Focus",
+            subtitle: "SOM persistence · MAOM and POM · Management effects"
+          },
+          {
+            icon: "📘",
+            title: "Teaching and Academic Leadership",
+            subtitle: "Course design · Research communication · Mentoring"
+          }
+        ],
+        aboutPhoto: ""
+      },
+      research: [
+        {
+          title: "Soil Organic Matter Fractionation and Persistence",
+          desc: "Investigating how management reshapes particulate and mineral-associated organic matter pools, and how those shifts relate to carbon persistence and soil function.",
+          tags: ["POM", "MAOM", "NaI Fractionation", "Soil Carbon"]
+        },
+        {
+          title: "Spectroscopy for Mechanistic Soil Understanding",
+          desc: "Using solid-state 13C NMR, DRIFTS, and related analytical tools to resolve the molecular nature of soil organic matter and management-sensitive compositional changes.",
+          tags: ["13C NMR", "DRIFTS", "Molecular Composition", "SOM Chemistry"]
+        },
+        {
+          title: "Management, Water Function, and Resilience",
+          desc: "Linking management-driven changes in soil organic matter with nutrient and water-related soil functions, with the goal of identifying meaningful indicators of resilience.",
+          tags: ["Water Function", "Resilience", "Grazing", "Agricultural Soils"]
+        }
+      ],
+      gallery: [
+        {
+          image: "",
+          category: "Field Work",
+          caption: "Upload an image to assets/gallery and set the image path here."
+        }
+      ],
+      publications: [
+        {
+          year: "2024",
+          title: "DRIFT-NMR-Jeewan et al 2024",
+          authors: "Gamage, J., et al.",
+          journal: "Add journal name here",
+          type: "paper",
+          url: ""
+        },
+        {
+          year: "2026",
+          title: "Add your current paper or manuscript here",
+          authors: "Gamage, J., et al.",
+          journal: "In preparation",
+          type: "inprep",
+          url: ""
+        }
+      ],
+      fiveYearPlan: [
+        {
+          period: "Year 1",
+          title: "Mechanistic Foundation",
+          items: [
+            "Advance SOM fractionation and spectroscopy workflows",
+            "Develop core publications from current datasets",
+            "Strengthen links between composition and function"
+          ]
+        },
+        {
+          period: "Year 2",
+          title: "Cross-System Testing",
+          items: [
+            "Compare management systems and soil fractions",
+            "Refine analytical pipelines and interpretation",
+            "Build collaborative datasets"
+          ]
+        },
+        {
+          period: "Year 3",
+          title: "Translation and Prediction",
+          items: [
+            "Connect mechanistic results with practical indicators",
+            "Explore scalable sensing and prediction approaches",
+            "Expand integrated soil function analysis"
+          ]
+        },
+        {
+          period: "Year 4",
+          title: "Program Expansion",
+          items: [
+            "Lead larger collaborative projects",
+            "Mentor trainees and publish synthesis work",
+            "Extend work toward broader agroecosystem resilience questions"
+          ]
+        },
+        {
+          period: "Year 5+",
+          title: "Research Leadership",
+          items: [
+            "Establish a distinctive independent research program",
+            "Build long-term collaborations",
+            "Translate work into broader scientific and applied impact"
+          ]
+        }
+      ],
+      partners: [
+        "University of Guelph",
+        "Elora Research Station",
+        "Collaborative Soil and Agronomy Networks"
+      ],
+      contact: {
+        fullName: "Jeewan Gamage",
+        role: "Soil Scientist · Postdoctoral Researcher · University of Guelph",
+        email: "your.email@uoguelph.ca",
+        location: "Guelph, Ontario, Canada",
+        researchGate: "#",
+        googleScholar: "#",
+        linkedIn: "#",
+        universityProfile: "#"
+      }
+    };
+  </script>
+
+  <div class="site-note">
+    <strong>GitHub-friendly version:</strong> edit the <strong>SITE_DATA</strong> section near the top of <strong>index.html</strong>, then commit changes.
+  </div>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#top" class="brand" id="brandName">Jeewan Gamage</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#plan">Plan</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <img class="hero-bg" id="heroBg" alt="" style="display:none;">
+    <div class="wrap hero-inner">
+      <div>
+        <div class="eyebrow" id="heroEyebrow"></div>
+        <h1>
+          <span id="heroFirst"></span>
+          <em id="heroLast"></em>
+        </h1>
+        <p class="hero-tagline" id="heroTagline"></p>
+        <div class="hero-actions">
+          <a href="#research" class="btn-primary">Explore Research</a>
+          <a href="#publications" class="btn-outline">View Publications</a>
+        </div>
+      </div>
+      <div class="portrait-card" id="portraitCard"></div>
+    </div>
+  </header>
+
+  <section class="section section-alt" id="about">
+    <div class="wrap about-grid">
+      <div>
+        <div class="label">About</div>
+        <h2 class="section-title" id="aboutTitle"></h2>
+        <div class="about-bio" id="aboutBio"></div>
+        <div class="creds" id="credentials"></div>
+      </div>
+      <div class="about-photo" id="aboutPhotoBox"></div>
+    </div>
+  </section>
+
+  <section class="section" id="research">
+    <div class="wrap">
+      <div class="label">Research</div>
+      <h2 class="section-title">Research Programme</h2>
+      <div class="cards" id="researchCards"></div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="gallery">
+    <div class="wrap">
+      <div class="label">Gallery</div>
+      <h2 class="section-title">Photos and Field Work</h2>
+      <div class="gallery-grid" id="galleryGrid"></div>
+    </div>
+  </section>
+
+  <section class="section" id="publications">
+    <div class="wrap">
+      <div class="label">Publications</div>
+      <h2 class="section-title">Publications and Research Outputs</h2>
+      <div class="pub-list" id="pubList"></div>
+    </div>
+  </section>
+
+  <section class="section section-dark" id="plan">
+    <div class="wrap">
+      <div class="label">Research Timeline</div>
+      <h2 class="section-title">Five-Year Research Programme</h2>
+      <div class="timeline" id="timeline"></div>
+    </div>
+  </section>
+
+  <section class="section partners">
+    <div class="wrap">
+      <div class="partners-title">Institutional and Collaborative Partners</div>
+      <div class="partner-list" id="partnersList"></div>
+    </div>
+  </section>
+
+  <section class="section contact" id="contact">
+    <div class="wrap">
+      <h2 class="contact-name" id="contactName"></h2>
+      <div class="contact-role" id="contactRole"></div>
+      <a class="contact-email" id="contactEmail" href="#"></a>
+      <div class="contact-location" id="contactLocation"></div>
+      <div class="socials">
+        <a id="linkRG" href="#" target="_blank" rel="noopener noreferrer">ResearchGate</a>
+        <a id="linkGS" href="#" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+        <a id="linkLI" href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a id="linkUNI" href="#" target="_blank" rel="noopener noreferrer">University Profile</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap" id="footerCopy"></div>
+  </footer>
+
+  <script>
+    function setText(id, value) {
+      document.getElementById(id).textContent = value || "";
+    }
+
+    function renderHero() {
+      setText("heroEyebrow", SITE_DATA.hero.eyebrow);
+      setText("heroFirst", SITE_DATA.hero.firstName);
+      setText("heroLast", SITE_DATA.hero.lastName);
+      setText("heroTagline", SITE_DATA.hero.tagline);
+      setText("brandName", `${SITE_DATA.hero.firstName} ${SITE_DATA.hero.lastName}`);
+
+      const bg = document.getElementById("heroBg");
+      if (SITE_DATA.hero.heroBackground) {
+        bg.src = SITE_DATA.hero.heroBackground;
+        bg.style.display = "block";
+      }
+
+      const portraitCard = document.getElementById("portraitCard");
+      if (SITE_DATA.hero.heroPortrait) {
+        portraitCard.innerHTML = `<img src="${SITE_DATA.hero.heroPortrait}" alt="${SITE_DATA.hero.firstName} ${SITE_DATA.hero.lastName}">`;
+      } else {
+        portraitCard.innerHTML = `<div class="portrait-empty">Add portrait image path in SITE_DATA.hero.heroPortrait</div>`;
+      }
+    }
+
+    function renderAbout() {
+      setText("aboutTitle", SITE_DATA.about.title);
+      document.getElementById("aboutBio").innerHTML = SITE_DATA.about.bio.map(p => `<p>${p}</p>`).join("");
+
+      const credentials = document.getElementById("credentials");
+      credentials.innerHTML = SITE_DATA.about.credentials.map(c => `
+        <div class="cred">
+          <div class="cred-icon">${c.icon || "•"}</div>
+          <div>
+            <strong>${c.title}</strong>
+            <span>${c.subtitle}</span>
+          </div>
+        </div>
+      `).join("");
+
+      const aboutPhotoBox = document.getElementById("aboutPhotoBox");
+      if (SITE_DATA.about.aboutPhoto) {
+        aboutPhotoBox.classList.remove("empty");
+        aboutPhotoBox.innerHTML = `<img src="${SITE_DATA.about.aboutPhoto}" alt="About photo">`;
+      } else {
+        aboutPhotoBox.classList.add("empty");
+        aboutPhotoBox.innerHTML = `Add image path in SITE_DATA.about.aboutPhoto`;
+      }
+    }
+
+    function renderResearch() {
+      const box = document.getElementById("researchCards");
+      box.innerHTML = SITE_DATA.research.map((item, index) => `
+        <article class="card">
+          <div class="card-num">${String(index + 1).padStart(2, "0")}</div>
+          <div class="card-title">${item.title}</div>
+          <div class="card-desc">${item.desc}</div>
+          <div class="tags">${item.tags.map(tag => `<span class="tag">${tag}</span>`).join("")}</div>
+        </article>
+      `).join("");
+    }
+
+    function renderGallery() {
+      const box = document.getElementById("galleryGrid");
+      const usable = SITE_DATA.gallery.filter(item => item.image || item.caption);
+
+      if (!usable.length) {
+        box.innerHTML = `<div class="empty-block">Add gallery images in SITE_DATA.gallery</div>`;
+        return;
+      }
+
+      box.innerHTML = usable.map(item => `
+        <figure class="gallery-item">
+          ${item.image ? `<img src="${item.image}" alt="${item.caption || item.category || 'Gallery image'}">` : `<div class="empty-block">Add image path</div>`}
+          <figcaption class="gallery-copy">
+            <div class="gallery-cat">${item.category || "Gallery"}</div>
+            <div class="gallery-caption">${item.caption || ""}</div>
+          </figcaption>
+        </figure>
+      `).join("");
+    }
+
+    function renderPublications() {
+      const typeLabel = { paper: "Journal Article", inprep: "In Preparation", thesis: "Thesis" };
+      const box = document.getElementById("pubList");
+      box.innerHTML = SITE_DATA.publications.map(pub => {
+        const titleHtml = pub.url ? `<a href="${pub.url}" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">${pub.title}</a>` : pub.title;
+        return `
+          <article class="pub-item">
+            <div class="pub-year">${pub.year}</div>
+            <div>
+              <div class="pub-title">${titleHtml}</div>
+              <div class="pub-authors">${pub.authors}</div>
+              <div class="pub-journal">${pub.journal}</div>
+            </div>
+            <div class="pub-badge ${pub.type || 'paper'}">${typeLabel[pub.type] || pub.type || 'Output'}</div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function renderPlan() {
+      const box = document.getElementById("timeline");
+      box.innerHTML = SITE_DATA.fiveYearPlan.map(block => `
+        <article class="timeline-item">
+          <div class="period">${block.period}</div>
+          <div class="timeline-title">${block.title}</div>
+          <ul>${block.items.map(item => `<li>${item}</li>`).join("")}</ul>
+        </article>
+      `).join("");
+    }
+
+    function renderPartners() {
+      const box = document.getElementById("partnersList");
+      box.innerHTML = SITE_DATA.partners.map(p => `<span>${p}</span>`).join("");
+    }
+
+    function renderContact() {
+      setText("contactName", SITE_DATA.contact.fullName);
+      setText("contactRole", SITE_DATA.contact.role);
+      setText("contactLocation", SITE_DATA.contact.location);
+
+      const email = document.getElementById("contactEmail");
+      email.textContent = SITE_DATA.contact.email;
+      email.href = `mailto:${SITE_DATA.contact.email}`;
+
+      document.getElementById("linkRG").href = SITE_DATA.contact.researchGate || "#";
+      document.getElementById("linkGS").href = SITE_DATA.contact.googleScholar || "#";
+      document.getElementById("linkLI").href = SITE_DATA.contact.linkedIn || "#";
+      document.getElementById("linkUNI").href = SITE_DATA.contact.universityProfile || "#";
+
+      const year = new Date().getFullYear();
+      setText("footerCopy", `© ${year} ${SITE_DATA.contact.fullName}. All rights reserved.`);
+    }
+
+    renderHero();
+    renderAbout();
+    renderResearch();
+    renderGallery();
+    renderPublications();
+    renderPlan();
+    renderPartners();
+    renderContact();
+  </script>
+</body>
+</html>
