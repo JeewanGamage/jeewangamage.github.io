@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 460" width="1200" height="460">
+  <!-- Placeholder: a stylised soil profile under pasture. Replace with a real
+       field photo (upload images/field.jpg and update 01-index.qmd). -->
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a9cbe8"/><stop offset="1" stop-color="#e3eef6"/></linearGradient>
+    <linearGradient id="soil" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4b3426"/><stop offset="0.45" stop-color="#6b4a33"/><stop offset="1" stop-color="#8a6a4a"/></linearGradient>
+  </defs>
+  <rect width="1200" height="170" fill="url(#sky)"/>
+  <rect y="150" width="1200" height="60" fill="#5d8a3a"/>
+  <path d="M0 160 Q 150 135 300 158 T 600 156 T 900 152 T 1200 158 V 215 H 0 Z" fill="#6f9c45"/>
+  <rect y="210" width="1200" height="250" fill="url(#soil)"/>
+  <line x1="0" y1="290" x2="1200" y2="290" stroke="#3b281c" stroke-width="2" stroke-dasharray="10 8" opacity="0.6"/>
+  <line x1="0" y1="380" x2="1200" y2="380" stroke="#3b281c" stroke-width="2" stroke-dasharray="10 8" opacity="0.5"/>
+  <g stroke="#d9c7a3" stroke-width="2" fill="none" opacity="0.55">
+    <path d="M200 212 C 205 250 190 280 200 330"/><path d="M520 212 C 510 260 530 300 515 360"/>
+    <path d="M840 212 C 850 250 835 300 845 340"/><path d="M1050 212 C 1040 240 1060 270 1050 300"/>
+  </g>
+  <g font-family="Helvetica, Arial, sans-serif" font-size="22" fill="#f5efe6">
+    <text x="24" y="250">A horizon · POM and recent ¹³C</text>
+    <text x="24" y="340">B horizon · MAOM</text>
+    <text x="24" y="430">C horizon</text>
+  </g>
+</svg>
