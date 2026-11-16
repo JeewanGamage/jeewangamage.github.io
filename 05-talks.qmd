@@ -1,0 +1,59 @@
+---
+title: "Talks"
+format:
+  html:
+    fontsize: 0.8em
+    linestretch: 1
+---
+
+Welcome to my presentations section! 👋
+
+Here you will find my invited talks, keynotes and selected conference presentations. Where a recording exists, it is embedded; to add one, paste a YouTube embed block under the matching heading (see the example at the bottom of this page's source).
+
+Let's take a look... 🎥
+
+## 2026 \| Sustainable soil science for food and water security
+
+Invited research seminar, Department of Earth, Energy and Environment, University of Calgary. A three-theme research vision at the soil-plant-water nexus: mechanisms of soil organic matter stabilization, diagnostic scaling with spectroscopy and sensors, and adoption with Prairie producers.
+
+## 2026 \| Kandyan home gardens and nature-based solutions
+
+Invited lecture, Wageningen University, the Netherlands. The Kandyan home garden as a multi-storey agroforestry model and what it teaches about carbon, water and livelihoods.
+
+## 2026 \| Livestock integration for sustainable soil and ecosystem management
+
+Session Chair, Canadian Society of Soil Science and Canadian Society of Agronomy Joint Annual Meeting; oral presentation on recent-carbon allocation under contrasting nitrogen supply and poster on forage-management effects on SOM density fractions.
+
+## 2025 \| ¹³C NMR of soil organic carbon under adaptive multi-paddock grazing
+
+Oral presentation, Canadian Society of Soil Science Annual Meeting, Guelph, Ontario. Comparative solid-state ¹³C NMR study of soil organic carbon composition under adaptive multi-paddock grazing, conventional grazing and other land uses in temperate grasslands.
+
+## 2023 \| Diagenetic formation of recalcitrant organic matter: a proton NMR study
+
+Oral presentation, European Geosciences Union General Assembly, Vienna. Proton-NMR evidence for resistant soil organic matter formation in an organic soil profile.
+
+## 2022 \| Solid-state NMR and DRIFTS of an organic soil profile
+
+Oral presentations at the MOOT 33 NMR Conference (Guelph) and the Joint CSSS-Alberta Soil Science Workshop (Edmonton); posters at the AGU Fall Meeting (Chicago) and the World Congress of Soil Science (Glasgow) on molecular SOM transformation and transport.
+
+## 2020 \| Soil organic matter and soil health
+
+Keynote, Ontario Soil and Crop Improvement Association Annual General Meeting, London, Ontario. What soil organic matter is, what it does for soil health, and what producers can measure.
+
+## 2019 \| Microbial carbon-use efficiency with ¹⁴C tracers
+
+Oral and poster presentations, European Geosciences Union General Assembly, Vienna.
+
+## Field days \| Elora Research Station
+
+Organizer and presenter, pasture field days for producers, researchers, industry partners and producer organizations on pasture management, adaptive multi-paddock grazing and soil health.
+
+<!--
+Example of an embedded recording. Copy this block under any heading above,
+replacing VIDEO_ID with the YouTube id, and remove the comment markers.
+
+::: {align="center"}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+</iframe>
+:::
+-->

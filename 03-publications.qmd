@@ -1,0 +1,90 @@
+---
+title: "Publications"
+format:
+  html:
+    fontsize: 0.8em
+    linestretch: 1
+---
+
+Google Scholar profile: [<i class="bi bi-mortarboard-fill"></i> Jeewan Gamage](https://scholar.google.com/citations?user=unITnTcAAAAJ&hl=en). Earlier publications appear under the name H. G. J. T. Kumara.
+
+::: panel-tabset
+# 📑Refereed
+
+### Total (6)
+
+1.  **Gamage, J.**, Longstaffe, J., Gillespie, A., Voroney, P. 2024. Chemical composition of soil humin in an organic soil profile. *Applied Geochemistry* 165, 105954. <https://doi.org/10.1016/j.apgeochem.2024.105954>
+
+2.  **Gamage, J.**, Longstaffe, J., Gillespie, A., Lo, A., Voroney, P. 2023. Evidence for the formation of fused aromatic ring structures in an organic soil profile in the early diagenesis. *Scientific Reports* 13, 12378. <https://doi.org/10.1038/s41598-023-39181-8>
+
+3.  Gamage, A., Gangahagedara, R., Subasinghe, S., **Gamage, J.**, Guruge, C., Senaratne, S., Randika, T., Rathnayake, C., Hameed, Z., Madhujith, T., Merah, O. 2024. Advancing sustainability: The impact of emerging technologies in agriculture. *Current Plant Biology* 40, 100420. <https://doi.org/10.1016/j.cpb.2024.100420>
+
+4.  Gamage, A., Gangahagedara, R., **Gamage, J.**, Jayasinghe, N., Kodikara, N., Suraweera, P., Merah, O. 2023. Role of organic farming for achieving sustainability in agriculture. *Farming System* 1(1), 100005. <https://doi.org/10.1016/j.farsys.2023.100005> (Top Cited Article, 2025)
+
+5.  **Kumara, H. G. J. T.**, Karunarathne, C. L. S. M., Beneragama, C. K., Ariyarathne, W. M. T. P. 2020. Critical analysis of the status of fruit crop industry in Sri Lanka. *Acta Horticulturae* 1278, 277-284. <https://doi.org/10.17660/ActaHortic.2020.1278.37>
+
+6.  Karunarathne, C. L. S. M., **Kumara, H. G. J. T.**, Beneragama, C. K., Ariyarathne, W. M. T. P. 2020. Present status of Sri Lankan vegetable exports and imports: where are we heading? *Acta Horticulturae* 1278. <https://doi.org/10.17660/ActaHortic.2020.1278.36>
+
+# 🔄 In Review
+
+### Manuscripts under review or submitted (6)
+
+1.  **Gamage, J.**, Gillespie, A. W., Schneider, K. 2026. Chemical composition of soil organic carbon under adaptive multi-paddock grazing and other land uses in temperate grasslands: A comparative ¹³C NMR study. *Scientific Reports*, under review. Preprint: <https://doi.org/10.21203/rs.3.rs-10476186/v1>
+
+2.  **Gamage, J.**, Gillespie, A. W., Schneider, K. 2026. Forage type and nitrogen supply alter short-term recovery of recent photosynthate across shoots, roots and soil. *Plant and Soil*, in peer review.
+
+3.  **Gamage, J.**, Gillespie, A. W., Schneider, K. 2026. Residual cutting height shapes short-term ¹³C recovery in tall fescue and soil during fall regrowth. *Grass and Forage Science*, submitted.
+
+4.  **Gamage, J.**, Voroney, P., Merah, O. 2026. Formation and characterization of recalcitrant soil organic matter: Review. *Soil Biology and Biochemistry*, in peer review.
+
+5.  **Gamage, J.**, et al. 2026. Depth trends in solvent-extractable stabilised soil organic matter across an organic-soil profile resolved by frequency-reversed multiplicity-edited HSQC and ¹H NMR. *Organic Geochemistry*, in peer review.
+
+6.  **Gamage, J.**, Voroney, P., Gillespie, A. W., Longstaffe, J. 2026. Biochemical transformations in an organic-soil profile associated with the formation of resistant soil organic matter: DRIFT spectroscopy analysis. *Geoderma*, in peer review.
+
+# 📄 Proceedings
+
+### Papers in conference proceedings (5)
+
+1.  **Kumara, H. G. J. T.**, Beneragama, C. K., Karunarathne, C. L. S. M., Ariyarathne, M. P. 2017. Intraspecific plasticity in circadian rhythms in photosynthetic organisms: evidence from *Euglena gracilis* Z. 6th YSF Symposium Proceedings, University of Peradeniya, p. 65. ISBN 978-955-8630-06-8.
+
+2.  **Kumara, H. G. J. T.**, Karunarathne, C. L. S. M., Beneragama, C. K., Ariyarathne, W. M. T. P. 2017. Present status of fruit crop industry in Sri Lanka. 4th International Conference on Postharvest and Quality Management of Horticultural Products of Interest for Tropical Regions, Kandy, Sri Lanka, p. 12. ISBN 978-955-589-231-5.
+
+3.  Karunarathne, C. L. S. M., **Kumara, H. G. J. T.**, Beneragama, C. K., Ariyarathne, W. M. T. P. 2017. Dynamics of Sri Lankan fresh vegetable industry in the international trade: past, present and future. 4th International Conference on Postharvest and Quality Management of Horticultural Products, Kandy, Sri Lanka, p. 14. ISBN 978-955-589-231-5.
+
+4.  **Kumara, H. G. J. T.** 2016. Assessing nitrogen use efficiency of irrigated rice (*Oryza sativa* L.): use of stabilized urea. Peradeniya University International Research Sessions (iPURSE), p. 379. ISBN 978-955-589-225-4.
+
+5.  **Kumara, H. G. J. T.** 2016. Improving nitrogen use efficiency of irrigated rice (*Oryza sativa* L.): use of stabilized urea. International Nitrogen Initiative Conference (INI2016), Melbourne, Australia.
+
+# 🎤 Presentations
+
+### Oral presentations (16)
+
+1.  2026. Invited research seminar, Sustainable soil science for food and water security. University of Calgary, Canada.
+2.  2026. Invited lecture, Kandyan home gardens and nature-based solutions. Wageningen University, the Netherlands.
+3.  2026. Recent-C allocation under contrasting N supply. Canadian Society of Soil Science Annual Meeting.
+4.  2025. **Gamage, J.**, Mehre, J., Gillespie, A., Schneider, K. A comparative ¹³C NMR study of soil organic carbon composition under adaptive multi-paddock grazing and conventional grazing. CSSS Annual Meeting, Guelph, ON.
+5.  2023. **Gamage, J.**, Longstaffe, J., Gillespie, A., Al-Abdul-Wahid, S., Lo, A., Voroney, P. Diagenetic formation of recalcitrant organic matter in an organic soil profile: proton NMR study. EGU General Assembly, Vienna, Austria.
+6.  2022. **Gamage, J.**, et al. Analyzing an organic soil profile with solid-state NMR. MOOT 33 NMR Conference, Guelph, ON.
+7.  2022. **Gamage, J.**, Longstaffe, J., Gillespie, A., Voroney, P. Use of DRIFT spectroscopy as a fast and reliable tool to estimate recalcitrant soil organic matter. CIRCLE Graduate South Asia Conference, Guelph, ON.
+8.  2022. **Gamage, J.**, Longstaffe, J., Gillespie, A., Voroney, P. Molecular characterization of SOM under different land uses by DRIFT and ¹³C DP-MAS NMR spectroscopy. Joint CSSS Annual Meeting and Alberta Soil Science Workshop, Edmonton, AB.
+9.  2021. **Gamage, J.**, Gillespie, A., Longstaffe, J., Voroney, P. Evidence of fused aromatic rings (FAR) in an organic soil. 20th International Humic Substances Society Conference (virtual).
+10. 2020. **Gamage, J.** Soil organic matter and soil health. Keynote, Ontario Soil and Crop Improvement Association Annual General Meeting, London, ON.
+11. 2019. **Gamage, J.**, Voroney, P. Assessing substrate C-use efficiency with direct measurements of soil microbial biomass C coupled with ¹⁴C tracer techniques. EGU General Assembly, Vienna, Austria.
+12. 2019. **Gamage, J.**, Voroney, P. Comparison of methods to remove soil inorganic carbon for soil organic carbon analysis. Instrumental Agricultural Analysis Seminar, Saint Joseph, Michigan.
+13. 2017. **Kumara, H. G. J. T.**, et al. Present status of fruit crop industry in Sri Lanka. 4th International Conference on Postharvest and Quality Management, Kandy, Sri Lanka.
+14. 2017. **Kumara, H. G. J. T.**, et al. Intraspecific plasticity in circadian rhythms in photosynthetic organisms. 6th YSF Symposium, University of Peradeniya (Best Presenter).
+15. 2016. **Kumara, H. G. J. T.** Improving nitrogen use efficiency of irrigated rice using stabilized urea. International Nitrogen Initiative Conference, Melbourne, Australia.
+16. 2016. **Kumara, H. G. J. T.** Assessing nitrogen use efficiency of irrigated rice using stabilized urea. iPURSE 2016, Peradeniya, Sri Lanka.
+
+### Poster presentations (9)
+
+1.  2026. Forage-management effects on SOM density fractions. CSSS Annual Meeting.
+2.  2025. **Gamage, J.**, Reisiger, C., Gillespie, A., Schneider, K. The effect of nitrogen fertilization on photosynthetic carbon allocation in a temperate forage system. CSSS Annual Meeting, Guelph, ON.
+3.  2022. **Gamage, J.**, et al. Recalcitrant soil organic matter transportation to the river sediment: a case study of organic soil and nearby river sediment. AGU Fall Meeting, Chicago, USA.
+4.  2022. **Gamage, J.**, et al. Molecular level comparison of SOM in an organic soil profile extracted by HF and NaOH using ¹³C DP-MAS NMR spectroscopy. AGU Fall Meeting, Chicago, USA.
+5.  2022. **Gamage, J.**, Longstaffe, J., Gillespie, A., Voroney, P. Evidence for formation of fused aromatic ring structures (FARs) in organic soil. World Congress of Soil Science, Glasgow, UK.
+6.  2022. **Gamage, J.**, Longstaffe, J., Gillespie, A., Voroney, P. Infrared spectra of soil organic matter in a muck soil profile. Joint CSSS-ASSW Meeting, Edmonton, AB.
+7.  2021. **Gamage, J.**, Longstaffe, J., Gillespie, A., Voroney, P. Evidence for formation of fused aromatic ring structures (FARs) in different land uses. Joint CSSS-ASSW Meeting, Edmonton, AB.
+8.  2021. **Gamage, J.**, Audette, Y., Gillespie, A., Voroney, P. Molecular-level characterization of alkali and acid extracted soil residues using carbon NEXAFS. CSSS Annual Meeting, Charlottetown, PEI.
+9.  2019. **Gamage, J.**, Ramnarine, R., Voroney, P. Assessing substrate C-use efficiency with direct measurements of soil microbial biomass C coupled with ¹⁴C tracer techniques. EGU General Assembly, Vienna, Austria.
+:::

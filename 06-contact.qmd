@@ -1,0 +1,21 @@
+---
+title: "Contact me"
+format:
+  html:
+    fontsize: 0.8em
+    linestretch: 1
+---
+
+<i class="bi bi-envelope-fill"></i> hkumara\@uoguelph.ca
+
+<i class="bi bi-envelope-fill"></i> jeewantharindu\@gmail.com
+
+<i class="bi bi-pin-map-fill"></i> Department of Plant Agriculture \| Ontario Agricultural College
+
+University of Guelph \| 50 Stone Rd E, Guelph, ON-N1G 2W1, Canada.
+
+# Networks
+
+|  |  |  |
+|------------------------|------------------------|------------------------|
+| [![](assets/images/linkedin-brands.svg){fig-align="center" width="60" height="60"}](https://www.linkedin.com/in/jeewan-gamage-phd-mba-58355467/) | [![](assets/images/github-brands.svg){fig-align="center" width="60" height="60"}](http://github.com/jeewangamage) | [![](assets/images/google-scholar.svg){fig-align="center" width="60" height="60"}](https://scholar.google.com/citations?user=unITnTcAAAAJ&hl=en) |

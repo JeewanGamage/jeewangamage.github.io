@@ -1,0 +1,55 @@
+project:
+  type: website
+  output-dir: docs
+  resources:
+    - index.html
+
+website:
+  title: "Jeewan Gamage"
+  site-url: https://jeewangamage.github.io
+  repo-url: https://github.com/jeewangamage/jeewangamage.github.io
+  repo-branch: main
+  repo-actions: [edit]
+  favicon: images/favicon.svg
+  navbar:
+    background: "#bc4749"
+    left:
+      - href: 01-index.qmd
+        text: Home
+      - href: 02-career.qmd
+        text: Career
+      - href: 03-publications.qmd
+        text: Publications
+      - href: 04-digital.qmd
+        text: Digital Resources
+      - href: 05-talks.qmd
+        text: Talks
+      - href: 06-contact.qmd
+        text: Contact
+    right:
+      - icon: github
+        href: https://github.com/jeewangamage/
+      - icon: linkedin
+        href: https://www.linkedin.com/in/jeewan-gamage-phd-mba-58355467/
+      - icon: google
+        href: https://scholar.google.com/citations?user=unITnTcAAAAJ&hl=en
+  page-footer:
+    left: "<span> Developed by Jeewan Gamage using [Quarto](https://quarto.org/). License: [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/). </span>"
+    background: dark
+  open-graph: true
+
+format:
+  html:
+    theme:
+      light: journal
+      dark: darkly
+    css: styles.css
+    toc: true
+    toc-title: ""
+    toc-location: left
+    code-copy: true
+    code-overflow: wrap
+    mainfont: "Atkinson Hyperlegible"
+    link-external-newwindow: true
+
+editor: visual

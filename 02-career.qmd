@@ -1,0 +1,159 @@
+---
+title: ""
+format:
+  html:
+    fontsize: 0.8em
+    linestretch: 1
+---
+
+# 👁️‍ Mission & Vision
+
+I am a soil biogeochemist with experience in research, teaching and stakeholder engagement, working at the soil-plant-water nexus. My passion and expertise are in soil organic matter chemistry, carbon stabilization in managed grasslands, isotope tracing and molecular spectroscopy, combined with reproducible data analysis and clear communication to producers, policy makers and students. I aim to lead an independent research program on climate-sensitive carbon retention and nutrient cycling in agricultural soils, co-designed with the people who manage the land.
+
+## 🎓Education
+
+-   Ph.D., Environmental Sciences. University of Guelph, Canada. 2023. Thesis: *Molecular characterization of recalcitrant soil organic matter in an organic soil profile* (advisor: Prof. Paul Voroney).
+
+-   MBA. University of Bedfordshire, United Kingdom. 2024. Thesis on ethical leadership and employee motivation in multinational companies.
+
+-   M.Sc., Floriculture and Landscape Architecture. Postgraduate Institute of Agriculture, University of Peradeniya, Sri Lanka. 2017 (GPA 3.92/4.00, ranked first).
+
+-   B.Sc., Agricultural Technology and Management. University of Peradeniya, Sri Lanka. 2015 (GPA 3.74/4.00, batch top).
+
+-   CIMA (Chartered Institute of Management Accountants), strategic level. Wisdom Business Academy, Colombo. 2011.
+
+## 🌱Interests
+
+Soil Carbon \| Isotope Tracing \| Molecular Spectroscopy \| Managed Grasslands \| Soil Health
+
+A handful of soil hides a whole story of transformations underneath. Curiosity about what persists, what is lost and why drives my work with producers, students and colleagues.
+
+-   **Research**: Molecular-level chemistry of soil organic matter; carbon stabilization, nutrient retention and water function in pasture and forage systems; recalcitrant and condensed aromatic carbon; nitrogen use efficiency.
+
+-   **Extension**: Field days, keynotes and producer-facing reports that turn isotope and spectroscopy data into grazing, defoliation and nitrogen management decisions.
+
+-   **Education**: Sustainable agricultural systems, soil fertility, experimental design and statistics, soil spectroscopy and isotope biogeochemistry, climate change governance.
+
+# 👨‍🔬 Research Experience
+
+## Postdoctoral Research Scholar
+
+### Sep 2023 - Present
+
+<i class="bi bi-geo-alt-fill"></i> Department of Plant Agriculture, University of Guelph, Ontario, Canada.
+
+*Description*: I lead the isotope, fractionation and spectroscopy components of a multi-site managed-forage research program on carbon stabilization, nutrient retention and water regulation in Ontario pasture and grazing systems. I designed and executed ¹³CO₂ pulse-chase labelling experiments (Spring and Fall 2025), coordinated repeated harvests and sample processing, developed mixed-model analyses of carbon allocation across shoots, roots and soil, and developed NMR and DRIFTS protocols to compare soil organic carbon chemistry under adaptive multi-paddock grazing and other land uses. I supported the implementation of CFI/John R. Evans Leaders Fund infrastructure (elemental analyser, root washer, ball mill) and deliver results to producers, industry partners and OMAFA collaborators. Supervisors: Dr. Kimberley Schneider and Dr. Adam Gillespie.
+
+## Graduate Research Assistant / Ph.D. Candidate
+
+### May 2018 - Aug 2023
+
+<i class="bi bi-geo-alt-fill"></i> School of Environmental Sciences, University of Guelph, Ontario, Canada.
+
+Conceptualised and implemented a seven-step molecular characterisation framework (solid-state and solution-state NMR, DRIFTS, FTIR, HF and NaOH extraction, NEXAFS and ¹⁴C tracing) for stable soil organic matter in an organic soil profile. Produced first-author papers in *Scientific Reports* and *Applied Geochemistry* and presented at EGU, AGU, the World Congress of Soil Science and CSSS. Supervisor: Prof. Paul Voroney.
+
+## Lecturer
+
+### Nov 2016 - May 2018
+
+<i class="bi bi-geo-alt-fill"></i> Department of Crop Science, Faculty of Agriculture, University of Peradeniya, Sri Lanka.
+
+Taught undergraduate crop science, agronomy, horticulture and sustainable agriculture; supervised undergraduate research projects; student advisor; member of the Student Advisory and Welfare Committee and the English Language Teaching Committee.
+
+## Lecturer (Temporary)
+
+### Nov 2015 - Nov 2016
+
+<i class="bi bi-geo-alt-fill"></i> Department of Crop Science, Faculty of Agriculture, University of Peradeniya, Sri Lanka.
+
+Supported agronomy and crop production teaching and grower-facing extension outreach.
+
+## Undergraduate Researcher
+
+### 2014 - 2015
+
+<i class="bi bi-geo-alt-fill"></i> Faculty of Agriculture, University of Peradeniya, Sri Lanka.
+
+Thesis on improving nitrogen use efficiency of irrigated rice (*Oryza sativa* L.) using stabilized urea; presented at the International Nitrogen Initiative Conference, Melbourne (2016). Supervisor: Prof. S. P. Nissanka.
+
+# 💼 Leadership and Professional Experience
+
+## Chair, Bargaining Lead and Unit Grievance Officer
+
+### Jul 2025 - Present
+
+<i class="bi bi-geo-alt-fill"></i> USW Local 4120 Unit A, Postdoctoral Employee Organization, University of Guelph.
+
+Lead governance and collective bargaining for the postdoctoral unit; coordinate confidential member matters, policy interpretation and dispute resolution with Human Resources and academic leadership; organize lunch-and-learn sessions on bargaining rights, career development and publication strategy.
+
+## Personal Banking Officer
+
+### Dec 2009 - Oct 2010
+
+<i class="bi bi-geo-alt-fill"></i> Bank of Ceylon, Dodangoda branch, Sri Lanka.
+
+Client financial services, records and compliance, and branch-level relationship management.
+
+# 📚 Teaching Experience
+
+## Part-time Faculty
+
+### Aug 2024 - Present
+
+<i class="bi bi-geo-alt-fill"></i> Conestoga College, Guelph, Ontario, Canada.
+
+Applied Research Project and Business Communications. Design and deliver lectures, labs and assessments; coach students from proposal to final report. Teaching evaluations average 4.7/5.0.
+
+## Curriculum Developer
+
+### May 2024 - Present
+
+<i class="bi bi-geo-alt-fill"></i> Conestoga College, Guelph, Ontario, Canada.
+
+STAT8080 "Business Statistics" and ENVR8300 "Climate Change Governance". Built complete curricula: weekly modules, assessment banks, rubrics, reproducible SAS and R exercises, and case content on carbon accounting, MRV and policy instruments ending in a policy-brief capstone.
+
+## Guest Lecturer
+
+### 2019 - 2026
+
+<i class="bi bi-geo-alt-fill"></i> University of Guelph, Ontario, Canada, and Wageningen University, the Netherlands.
+
+-   "Kandyan Home Garden Systems as a Sustainable Agroforestry Model", ENVS\*3230 Agroforestry Systems, University of Guelph (recurring, 2019 to 2025) and invited lecture at Wageningen University (2026).
+-   "Concepts and misconceptions of recalcitrant soil organic matter" and "Soil organic matter, current understanding", ENVS\*3310 Soil Biodiversity and Functions (2023).
+-   "Soil organic matter, feeding a population of 10 billion in 2050", ENVS\*4350 Forest Ecology (2023).
+
+## Graduate Teaching Assistant
+
+### Sep 2019 - Aug 2023
+
+<i class="bi bi-geo-alt-fill"></i> School of Environmental Sciences, University of Guelph, Ontario, Canada.
+
+ENVS\*6090, ENVS\*3270, ENVS\*4350, ENVS\*2310, ENVS\*3340, ENVS\*2060, AGR\*2320, ENVS\*3230 and GEOG\*3020. Delivered in-person and online lab sections and tutorials; marked assignments and exams; coached students through lab projects, data interpretation and scientific writing.
+
+# 🏅 Awards and Honours
+
+-   2026: Shortlisted to the final three for a tenure-track faculty position in Sustainable Soil Science for Food and Water Security (CRC Tier 2 nomination), University of Calgary.
+-   2025: Top Cited Article recognition, Gamage et al. (2023), *Farming System*.
+-   2021: Morwick Scholarship, University of Guelph.
+-   2020: OAC '60 Leadership Development Scholarship, University of Guelph.
+-   2018: OSCIA Soil Health Graduate Scholarship; OAC '71-'72 Entrance Graduate Scholarship in Sustainable Agriculture; International Doctoral Tuition Scholarship (2018 to 2022), University of Guelph.
+-   2017: Best Presenter, 6th Young Scientist Forum Symposium, University of Peradeniya.
+-   2016: International Nitrogen Initiative Conference award (one of ten global recipients); University Scholarship for Academic Excellence, Y. D. A. Senanayake Gold Medal and K. B. A. Sangakkara Memorial Prize in Crop Science, University of Peradeniya.
+
+# 💰 Grants and Funded Projects
+
+-   Ontario Agri-Food Innovation Alliance Tier 1, UG-T1-2024-102443, multi-season grassland carbon sequestration trials across Ontario, CAD 239,572 (with Dr. Kimberley Schneider). Contributed to proposal development; designed and lead the ¹³CO₂ pulse-chase workstream.
+-   Ontario Agri-Food Innovation Alliance Tier 1, UG-T1-2026-104039, NMR metabolomics methods to measure soil biochemical activity as an indicator of soil health, CAD 228,335 (with Dr. James Longstaffe). Decision pending.
+-   NSERC Alliance Grant application on forage-system carbon, nutrient retention and grazing management (contributor).
+-   Lab2Market Discover and Validate (NSERC/Mitacs): validation concept for a soil-health and salinity-risk dashboard.
+
+# 🤝 Service, Mentoring and Outreach
+
+-   Session Chair, "Livestock Integration for Sustainable Soil and Ecosystem Management", CSSS-CSA Joint Annual Meeting (2026).
+-   Journal reviewer: *Environmental Science & Technology Letters*, *Canadian Journal of Soil Science*, *Journal of Plant Nutrition and Soil Science*, *Global Challenges*.
+-   External examiner, MSc thesis, Memorial University of Newfoundland (2025).
+-   Mentor, Bayer B4U Mentorship Program (2025) and University of Guelph CORE Mentorship Program (2024); project guidance for 18 graduate students in Plant Agriculture and Environmental Sciences.
+-   Organized and led pasture field days at the Elora Research Station for producers, researchers and industry partners.
+-   Organizing committees: CIRCLE Graduate South Asia Conference (2022), FAuRS (2017), South Asian Symposium on Sustainable Environment Management (2016).
+-   Treasurer, Sri Lankan Association for Kitchener, Waterloo and Guelph (2025); Assistant Secretary, Wellington Kitchener Buddhist Association.
+-   Member: American Geophysical Union, European Geosciences Union, Canadian Society of Soil Science.
